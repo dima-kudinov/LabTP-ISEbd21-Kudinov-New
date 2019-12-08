@@ -26,6 +26,20 @@ namespace Laba
             Tube = tube;
             Count = count;
         }
+        public Teplovoz(string info) : base(info)
+        {
+            string[] strs = info.Split(';');
+            if (strs.Length == 6)
+            {
+                MaxSpeed = Convert.ToInt32(strs[0]);
+                Weight = Convert.ToInt32(strs[1]);
+                MainColor = Color.FromName(strs[2]);
+                DopColor = Color.FromName(strs[3]);
+                Line = Convert.ToBoolean(strs[4]);
+                Tube = Convert.ToBoolean(strs[5]);
+               
+            }
+        }
 
         public override void DrawLoc(Graphics g)
         {
@@ -53,7 +67,11 @@ namespace Laba
                 g.FillPolygon(m, tp.ToArray<Point>());
             }
         }
+        public override string ToString()
+        {
+            return base.ToString() + ";" + DopColor.Name + ";" + Line + ";" +
+           Tube;
+        }
 
-        
     }
 }
