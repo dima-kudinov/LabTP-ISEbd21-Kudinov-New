@@ -6,6 +6,7 @@ using System.Windows.Forms;
 
 namespace Laba
 {
+    public delegate void locDelegate(ITransport locomotive);
     static class Program
     {
         /// <summary>

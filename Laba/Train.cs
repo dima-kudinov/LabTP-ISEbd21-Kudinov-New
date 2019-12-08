@@ -25,6 +25,10 @@ namespace Laba
             pctrWidth = width;
             pctrHeight = height;
         }
+        public void SetMainColor(Color color)
+        {
+            MainColor = color;
+        }
         public abstract void MoveTransport(Direction direction);
         public abstract void DrawLoc(Graphics g);
     }

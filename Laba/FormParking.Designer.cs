@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             this.pictureBoxParking = new System.Windows.Forms.PictureBox();
-            this.buttonSetLoc = new System.Windows.Forms.Button();
-            this.buttonSetTepl = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.pictureBoxTakeLoc = new System.Windows.Forms.PictureBox();
             this.buttonTakeLoc = new System.Windows.Forms.Button();
@@ -38,6 +36,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.listBoxLevels = new System.Windows.Forms.ListBox();
+            this.buttonSetLoc = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxParking)).BeginInit();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTakeLoc)).BeginInit();
@@ -51,26 +50,6 @@
             this.pictureBoxParking.Size = new System.Drawing.Size(761, 543);
             this.pictureBoxParking.TabIndex = 0;
             this.pictureBoxParking.TabStop = false;
-            // 
-            // buttonSetLoc
-            // 
-            this.buttonSetLoc.Location = new System.Drawing.Point(762, 177);
-            this.buttonSetLoc.Name = "buttonSetLoc";
-            this.buttonSetLoc.Size = new System.Drawing.Size(218, 56);
-            this.buttonSetLoc.TabIndex = 1;
-            this.buttonSetLoc.Text = "Припарковать локомотив";
-            this.buttonSetLoc.UseVisualStyleBackColor = true;
-            this.buttonSetLoc.Click += new System.EventHandler(this.buttonSetLoc_Click);
-            // 
-            // buttonSetTepl
-            // 
-            this.buttonSetTepl.Location = new System.Drawing.Point(762, 239);
-            this.buttonSetTepl.Name = "buttonSetTepl";
-            this.buttonSetTepl.Size = new System.Drawing.Size(218, 49);
-            this.buttonSetTepl.TabIndex = 2;
-            this.buttonSetTepl.Text = "Припарковать тепловоз";
-            this.buttonSetTepl.UseVisualStyleBackColor = true;
-            this.buttonSetTepl.Click += new System.EventHandler(this.buttonSetTepl_Click);
             // 
             // groupBox2
             // 
@@ -138,14 +117,23 @@
             this.listBoxLevels.TabIndex = 5;
             this.listBoxLevels.SelectedIndexChanged += new System.EventHandler(this.listBoxLevels_SelectedIndexChanged);
             // 
+            // buttonSetLoc
+            // 
+            this.buttonSetLoc.Location = new System.Drawing.Point(796, 200);
+            this.buttonSetLoc.Name = "buttonSetLoc";
+            this.buttonSetLoc.Size = new System.Drawing.Size(139, 48);
+            this.buttonSetLoc.TabIndex = 6;
+            this.buttonSetLoc.Text = "Заказать";
+            this.buttonSetLoc.UseVisualStyleBackColor = true;
+            this.buttonSetLoc.Click += new System.EventHandler(this.buttonSetLoc_Click);
+            // 
             // FormParking
             // 
             this.ClientSize = new System.Drawing.Size(979, 543);
+            this.Controls.Add(this.buttonSetLoc);
             this.Controls.Add(this.listBoxLevels);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.buttonSetTepl);
-            this.Controls.Add(this.buttonSetLoc);
             this.Controls.Add(this.pictureBoxParking);
             this.Name = "FormParking";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxParking)).EndInit();
@@ -167,8 +155,6 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBoxParking;
-        private System.Windows.Forms.Button buttonSetLoc;
-        private System.Windows.Forms.Button buttonSetTepl;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.PictureBox pictureBoxTakeLoc;
         private System.Windows.Forms.Button buttonTakeLoc;
@@ -176,5 +162,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ListBox listBoxLevels;
+        private System.Windows.Forms.Button buttonSetLoc;
     }
 }

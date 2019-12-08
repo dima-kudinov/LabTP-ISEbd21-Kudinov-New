@@ -88,5 +88,10 @@ namespace Laba
                MainColor, DopColor, Posx, Posy);
             vagon.DrawVagon(g);
         }
+        public void SetDopColor(Color color)
+        {
+            DopColor = color;
+        }
+ 
     }
 }

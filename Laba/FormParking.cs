@@ -13,8 +13,9 @@ namespace Laba
     public partial class FormParking : Form
     {
         /// Объект от класса многоуровневой парковки
-        MultiLevelParking parking;        
+        MultiLevelParking parking;
         /// Количество уровней-парковок      
+         FormLocConfig form;
         private const int countLevel = 5;
         public FormParking()
 
@@ -41,72 +42,28 @@ namespace Laba
                 pictureBoxParking.Image = bmp;
             }
         }
-        /// Обработка нажатия кнопки "Припарковать автомобиль"
-        private void buttonSetLoc_Click(object sender, EventArgs e)
-        {
-            if (listBoxLevels.SelectedIndex > -1)
-            {
-                ColorDialog dialog = new ColorDialog();
-                if (dialog.ShowDialog() == DialogResult.OK)
-                {
-                    var loc = new locomotive(100, 1000, dialog.Color, dialog.Color, 0);
-                    int place = parking[listBoxLevels.SelectedIndex] + loc;
-                    if (place == -1)
-                    {
-                        MessageBox.Show("Нет свободных мест", "Ошибка",
-                       MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    Draw();
-                }
-            }
-        }
-        /// Обработка нажатия кнопки "Припарковать гоночный автомобиль"
-        private void buttonSetTepl_Click(object sender, EventArgs e)
-        {
-            if (listBoxLevels.SelectedIndex > -1)
-            {
-
-                ColorDialog dialog = new ColorDialog();
-                if (dialog.ShowDialog() == DialogResult.OK)
-                {
-                    ColorDialog dialogDop = new ColorDialog();
-                    if (dialogDop.ShowDialog() == DialogResult.OK)
-                    {
-                        var loc = new Teplovoz(100, 1000, dialog.Color,
-                       dialogDop.Color, true, true, 0);
-                        int place = parking[listBoxLevels.SelectedIndex] + loc;
-                        if (place == -1)
-                        {
-                            MessageBox.Show("Нет свободных мест", "Ошибка",
-                           MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                        Draw();
-                    }
-                }
-            }
-        }
-        /// Обработка нажатия кнопки "Забрать"
         private void buttonTakeLoc_Click(object sender, EventArgs e)
         {
             if (listBoxLevels.SelectedIndex > -1)
             {
                 if (maskedTextBox.Text != "")
                 {
-                    var car = parking[listBoxLevels.SelectedIndex] -
+                    var locomotive = parking[listBoxLevels.SelectedIndex] -
                    Convert.ToInt32(maskedTextBox.Text);
-                    if (car != null)
+                    if (locomotive != null)
                     {
                         Bitmap bmp = new Bitmap(pictureBoxTakeLoc.Width,
-                        pictureBoxTakeLoc.Height);
+                       pictureBoxTakeLoc.Height);
                         Graphics gr = Graphics.FromImage(bmp);
-                        car.SetPosition(5, 5, pictureBoxTakeLoc.Width,
-                        pictureBoxTakeLoc.Height);
-                        car.DrawLoc(gr);
+                        locomotive.SetPosition(5, 5, pictureBoxTakeLoc.Width,
+                       pictureBoxTakeLoc.Height);
+                        locomotive.DrawLoc(gr);
                         pictureBoxTakeLoc.Image = bmp;
                     }
                     else
                     {
-                        Bitmap bmp = new Bitmap(pictureBoxTakeLoc.Width,
+                        
+                     Bitmap bmp = new Bitmap(pictureBoxTakeLoc.Width,
                         pictureBoxTakeLoc.Height);
                         pictureBoxTakeLoc.Image = bmp;
                     }
@@ -114,11 +71,44 @@ namespace Laba
                 }
             }
         }
+        /// <summary>
         /// Метод обработки выбора элемента на listBoxLevels
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void listBoxLevels_SelectedIndexChanged(object sender, EventArgs e)
         {
             Draw();
-
+        }
+        /// <summary>
+        /// Обработка нажатия кнопки "Добавить автомобиль"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void buttonSetLoc_Click(object sender, EventArgs e)
+        {
+            form = new FormLocConfig();
+            form.AddEvent(AddLoc);
+            form.Show();
+        }
+        /// <summary>
+        /// Метод добавления машины
+        /// </summary>
+        /// <param name="car"></param>
+        private void AddLoc(ITransport locomotive)
+        {
+            if (locomotive != null && listBoxLevels.SelectedIndex > -1)
+            {
+                int place = parking[listBoxLevels.SelectedIndex] + locomotive;
+                if (place > -1)
+                {
+                    Draw();
+                }
+                else
+                {
+                    MessageBox.Show("Локомотив не удалось поставить");
+                }
+            }
         }
     }
 }

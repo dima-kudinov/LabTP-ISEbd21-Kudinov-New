@@ -53,6 +53,12 @@
     <Compile Include="FormLoc.Designer.cs">
       <DependentUpon>FormLoc.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormLocConfig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormLocConfig.Designer.cs">
+      <DependentUpon>FormLocConfig.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormParking.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -70,6 +76,9 @@
     <Compile Include="Vagon.cs" />
     <EmbeddedResource Include="FormLoc.resx">
       <DependentUpon>FormLoc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormLocConfig.resx">
+      <DependentUpon>FormLocConfig.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormParking.resx">
       <DependentUpon>FormParking.cs</DependentUpon>
