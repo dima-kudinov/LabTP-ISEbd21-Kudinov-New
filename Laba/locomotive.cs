@@ -7,46 +7,23 @@ using System.Threading.Tasks;
 
 namespace Laba
 {
-    class locomotive
+    public class locomotive : Train
     {
-        private int Posx;
-        private int Posy;
 
-        private int pctrWidth;
-        private int pctrHeight;
+        protected const int locWidth = 150;
+        protected const int locHeight = 80;
+        
+        public Color DopColor { protected set; get; }
 
-        private const int locWidth = 150;
-        private const int locHeight = 80;
-
-        public int MaxSpeed { private set; get; }
-        public float Weight { private set; get; }
-
-        public Color MainColor { private set; get; }
-        public Color DopColor { private set; get; }
-
-        public bool Tube { private set; get; }
-        public bool Line { private set; get; }
-
-        public locomotive(int maxSpeed, float weight, Color mainColor, Color dopColor,
-bool tube, bool line)
+        public locomotive(int maxSpeed, float weight, Color mainColor, Color dopColor)
         {
             MaxSpeed = maxSpeed;
             Weight = weight;
             MainColor = mainColor;
             DopColor = dopColor;
-            Line = line;
-            Tube = tube;
         }
 
-        public void SetPosition(int x, int y, int width, int height)
-        {
-            Posx = x;
-            Posy = y;
-            pctrWidth = width;
-            pctrHeight = height;
-        }
-
-        public void MoveTransport(Direction direction)
+        public override void MoveTransport(Direction direction)
         {
             float step1 = MaxSpeed * 100 / Weight;
             int step = Convert.ToInt32(step1);
@@ -61,7 +38,7 @@ bool tube, bool line)
                     break;
                 //влево
                 case Direction.Left:
-                    if (Posx - step > 0)
+                    if (Posx - step > 0 + 200)
 
                     {
                         Posx -= step;
@@ -84,21 +61,11 @@ bool tube, bool line)
             }
         }
 
-        public void DrawLoc(Graphics g)
+        public override void DrawLoc(Graphics g)
         {
             Pen pen = new Pen(Color.Black);
 
-            if (Tube)
-            {
-                Brush n = new SolidBrush(MainColor);
-                List<Point> l = new List<Point>(4);
-                l.Add(new Point(Posx + 85, Posy + 35));
-                l.Add(new Point(Posx + 85, Posy + 20));
-                l.Add(new Point(Posx + 90, Posy + 20));
-                l.Add(new Point(Posx + 90, Posy + 35));
-                
-                g.FillPolygon(n, l.ToArray<Point>());
-            }
+           
             
             Brush b = new SolidBrush(MainColor);
             List<Point> p = new List<Point>(11);
@@ -111,18 +78,6 @@ bool tube, bool line)
             p.Add(new Point(Posx + 75, Posy + 15));
 
             g.FillPolygon(b, p.ToArray<Point>());
-
-            if (Line)
-            {
-                Brush m = new SolidBrush(DopColor);
-                List<Point> tp = new List<Point>(4);
-                tp.Add(new Point(Posx + 10, Posy + 40));
-                tp.Add(new Point(Posx + 10, Posy + 35));
-                tp.Add(new Point(Posx + 90, Posy + 35));
-                tp.Add(new Point(Posx + 90, Posy + 40));
-
-                g.FillPolygon(m, tp.ToArray<Point>());
-            }
         }
     }
 }

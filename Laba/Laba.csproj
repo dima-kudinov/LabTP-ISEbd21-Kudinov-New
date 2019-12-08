@@ -53,9 +53,12 @@
     <Compile Include="FormLoc.Designer.cs">
       <DependentUpon>FormLoc.cs</DependentUpon>
     </Compile>
+    <Compile Include="ITransport.cs" />
     <Compile Include="locomotive.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Teplovoz.cs" />
+    <Compile Include="Train.cs" />
     <EmbeddedResource Include="FormLoc.resx">
       <DependentUpon>FormLoc.cs</DependentUpon>
     </EmbeddedResource>
