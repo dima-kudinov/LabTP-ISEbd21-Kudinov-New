@@ -24,11 +24,13 @@ namespace Laba
         public Color MainColor { private set; get; }
         public Color DopColor { private set; get; }
 
+        public Vagon.VagonCount Count { private set; get; }
+
         public bool Tube { private set; get; }
         public bool Line { private set; get; }
 
         public locomotive(int maxSpeed, float weight, Color mainColor, Color dopColor,
-bool tube, bool line)
+bool tube, bool line, Vagon.VagonCount count)
         {
             MaxSpeed = maxSpeed;
             Weight = weight;
@@ -36,6 +38,7 @@ bool tube, bool line)
             DopColor = dopColor;
             Line = line;
             Tube = tube;
+            Count = count;
         }
 
         public void SetPosition(int x, int y, int width, int height)
@@ -123,6 +126,9 @@ bool tube, bool line)
 
                 g.FillPolygon(m, tp.ToArray<Point>());
             }
+            Vagon vagon = new Vagon(Count,
+               MainColor, DopColor, Posx, Posy);
+            vagon.DrawVagon(g);
         }
     }
 }
