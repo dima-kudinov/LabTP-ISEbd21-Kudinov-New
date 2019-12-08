@@ -12,99 +12,112 @@ namespace Laba
 {
     public partial class FormParking : Form
     {
-        /// <summary>
-        /// Объект от класса-парковки
-        /// </summary>
-        Parking<ITransport> parking;
+        /// Объект от класса многоуровневой парковки
+        MultiLevelParking parking;        
+        /// Количество уровней-парковок      
+        private const int countLevel = 5;
         public FormParking()
+
         {
             InitializeComponent();
-            parking = new Parking<ITransport>(20, pictureBoxParking.Width,
+            parking = new MultiLevelParking(countLevel, pictureBoxParking.Width,
            pictureBoxParking.Height);
-            Draw();
-        }
-        /// <summary>
+            //заполнение listBox
+            for (int i = 0; i < countLevel; i++)
+            {
+                listBoxLevels.Items.Add("Уровень " + (i + 1));
+            }
+            
+        }      
         /// Метод отрисовки парковки
-        /// </summary>
         private void Draw()
         {
-            Bitmap bmp = new Bitmap(pictureBoxParking.Width, pictureBoxParking.Height);
-            Graphics gr = Graphics.FromImage(bmp);
-            parking.Draw(gr);
-            pictureBoxParking.Image = bmp;
-        }
-        /// <summary>
-        /// Обработка нажатия кнопки "Припарковать автомобиль"
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void buttonSetLoc_Click(object sender, EventArgs e)
-        {
-            ColorDialog dialog = new ColorDialog();
-            if (dialog.ShowDialog() == DialogResult.OK)
+            if (listBoxLevels.SelectedIndex > -1)
             {
-                var car = new locomotive(100, 1000, dialog.Color, Color.Red, 0);
-                int place = parking + car;
-                Draw();
+     Bitmap bmp = new Bitmap(pictureBoxParking.Width,
+    pictureBoxParking.Height);
+                Graphics gr = Graphics.FromImage(bmp);
+                parking[listBoxLevels.SelectedIndex].Draw(gr);
+                pictureBoxParking.Image = bmp;
             }
         }
-        /// <summary>
-        /// Обработка нажатия кнопки "Припарковать гоночный автомобиль"
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void buttonSetTepl_Click(object sender, EventArgs e)
+        /// Обработка нажатия кнопки "Припарковать автомобиль"
+        private void buttonSetLoc_Click(object sender, EventArgs e)
         {
-            ColorDialog dialog = new ColorDialog();
-            if (dialog.ShowDialog() == DialogResult.OK)
+            if (listBoxLevels.SelectedIndex > -1)
             {
-                ColorDialog dialogDop = new ColorDialog();
-                if (dialogDop.ShowDialog() == DialogResult.OK)
+                ColorDialog dialog = new ColorDialog();
+                if (dialog.ShowDialog() == DialogResult.OK)
                 {
-                    var car = new Teplovoz(100, 1000, dialog.Color, dialogDop.Color,
-                   true, true, 0);
-                    int place = parking + car;
+                    var loc = new locomotive(100, 1000, dialog.Color, dialog.Color, 0);
+                    int place = parking[listBoxLevels.SelectedIndex] + loc;
+                    if (place == -1)
+                    {
+                        MessageBox.Show("Нет свободных мест", "Ошибка",
+                       MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                     Draw();
                 }
             }
         }
-        /// <summary>
-        /// Обработка нажатия кнопки "Забрать"
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void buttonTakeLoc_Click(object sender, EventArgs e)
+        /// Обработка нажатия кнопки "Припарковать гоночный автомобиль"
+        private void buttonSetTepl_Click(object sender, EventArgs e)
         {
-            if (maskedTextBox.Text != "")
+            if (listBoxLevels.SelectedIndex > -1)
             {
-                var car = parking - Convert.ToInt32(maskedTextBox.Text);
-                if (car != null)
+
+                ColorDialog dialog = new ColorDialog();
+                if (dialog.ShowDialog() == DialogResult.OK)
                 {
-                    Bitmap bmp = new Bitmap(pictureBoxTakeLoc.Width,
-                   pictureBoxTakeLoc.Height);
-                    Graphics gr = Graphics.FromImage(bmp);
-                    car.SetPosition(5, 5, pictureBoxTakeLoc.Width,
-                   pictureBoxTakeLoc.Height);
-                    car.DrawLoc(gr);
-                    pictureBoxTakeLoc.Image = bmp;
+                    ColorDialog dialogDop = new ColorDialog();
+                    if (dialogDop.ShowDialog() == DialogResult.OK)
+                    {
+                        var loc = new Teplovoz(100, 1000, dialog.Color,
+                       dialogDop.Color, true, true, 0);
+                        int place = parking[listBoxLevels.SelectedIndex] + loc;
+                        if (place == -1)
+                        {
+                            MessageBox.Show("Нет свободных мест", "Ошибка",
+                           MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        Draw();
+                    }
                 }
-                else
-                {
-                    Bitmap bmp = new Bitmap(pictureBoxTakeLoc.Width,
-                   pictureBoxTakeLoc.Height);
-                    pictureBoxTakeLoc.Image = bmp;
-                }
-                Draw();
             }
         }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
+        /// Обработка нажатия кнопки "Забрать"
+        private void buttonTakeLoc_Click(object sender, EventArgs e)
         {
-
+            if (listBoxLevels.SelectedIndex > -1)
+            {
+                if (maskedTextBox.Text != "")
+                {
+                    var car = parking[listBoxLevels.SelectedIndex] -
+                   Convert.ToInt32(maskedTextBox.Text);
+                    if (car != null)
+                    {
+                        Bitmap bmp = new Bitmap(pictureBoxTakeLoc.Width,
+                        pictureBoxTakeLoc.Height);
+                        Graphics gr = Graphics.FromImage(bmp);
+                        car.SetPosition(5, 5, pictureBoxTakeLoc.Width,
+                        pictureBoxTakeLoc.Height);
+                        car.DrawLoc(gr);
+                        pictureBoxTakeLoc.Image = bmp;
+                    }
+                    else
+                    {
+                        Bitmap bmp = new Bitmap(pictureBoxTakeLoc.Width,
+                        pictureBoxTakeLoc.Height);
+                        pictureBoxTakeLoc.Image = bmp;
+                    }
+                    Draw();
+                }
+            }
         }
-
-        private void label3_Click(object sender, EventArgs e)
+        /// Метод обработки выбора элемента на listBoxLevels
+        private void listBoxLevels_SelectedIndexChanged(object sender, EventArgs e)
         {
+            Draw();
 
         }
     }
