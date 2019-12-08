@@ -16,7 +16,7 @@ namespace Laba
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormLoc());
+            Application.Run(new FormParking());
         }
     }
 }
