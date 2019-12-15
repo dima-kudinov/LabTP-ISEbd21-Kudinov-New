@@ -29,25 +29,25 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormLoc));
-            this.button1 = new System.Windows.Forms.Button();
+            this.buttonCreateLoc = new System.Windows.Forms.Button();
             this.buttonDown = new System.Windows.Forms.Button();
             this.buttonUp = new System.Windows.Forms.Button();
             this.buttonRight = new System.Windows.Forms.Button();
             this.buttonLeft = new System.Windows.Forms.Button();
             this.pictureBoxLoc = new System.Windows.Forms.PictureBox();
-            this.button2 = new System.Windows.Forms.Button();
+            this.buttonCreateTepl = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLoc)).BeginInit();
             this.SuspendLayout();
             // 
-            // button1
+            // buttonCreateLoc
             // 
-            this.button1.Location = new System.Drawing.Point(1424, 12);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(94, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Создать";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.buttonCreate_Click);
+            this.buttonCreateLoc.Location = new System.Drawing.Point(1424, 12);
+            this.buttonCreateLoc.Name = "buttonCreateLoc";
+            this.buttonCreateLoc.Size = new System.Drawing.Size(94, 23);
+            this.buttonCreateLoc.TabIndex = 1;
+            this.buttonCreateLoc.Text = "Создать";
+            this.buttonCreateLoc.UseVisualStyleBackColor = true;
+            this.buttonCreateLoc.Click += new System.EventHandler(this.buttonCreate_Click);
             // 
             // buttonDown
             // 
@@ -102,27 +102,27 @@
             this.pictureBoxLoc.TabIndex = 0;
             this.pictureBoxLoc.TabStop = false;
             // 
-            // button2
+            // buttonCreateTepl
             // 
-            this.button2.Location = new System.Drawing.Point(1424, 71);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(94, 23);
-            this.button2.TabIndex = 6;
-            this.button2.Text = "Создать";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.buttonCreateTepl.Location = new System.Drawing.Point(1424, 71);
+            this.buttonCreateTepl.Name = "buttonCreateTepl";
+            this.buttonCreateTepl.Size = new System.Drawing.Size(94, 23);
+            this.buttonCreateTepl.TabIndex = 6;
+            this.buttonCreateTepl.Text = "Создать";
+            this.buttonCreateTepl.UseVisualStyleBackColor = true;
+            this.buttonCreateTepl.Click += new System.EventHandler(this.button2_Click);
             // 
             // FormLoc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1531, 823);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.buttonCreateTepl);
             this.Controls.Add(this.buttonDown);
             this.Controls.Add(this.buttonUp);
             this.Controls.Add(this.buttonRight);
             this.Controls.Add(this.buttonLeft);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.buttonCreateLoc);
             this.Controls.Add(this.pictureBoxLoc);
             this.Name = "FormLoc";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
@@ -136,12 +136,12 @@
         #endregion
 
         private System.Windows.Forms.PictureBox pictureBoxLoc;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonCreateLoc;
         private System.Windows.Forms.Button buttonLeft;
         private System.Windows.Forms.Button buttonRight;
         private System.Windows.Forms.Button buttonUp;
         private System.Windows.Forms.Button buttonDown;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button buttonCreateTepl;
     }
 }
 
