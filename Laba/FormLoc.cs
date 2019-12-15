@@ -12,7 +12,8 @@ namespace Laba
 {
     public partial class FormLoc : Form
     {
-        private locomotive loc;
+        private locomotive loc;
+
         public FormLoc()
         {
             InitializeComponent();
