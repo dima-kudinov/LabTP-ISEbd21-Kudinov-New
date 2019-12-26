@@ -15,7 +15,7 @@ namespace Laba
 
 
         public Teplovoz(int maxSpeed, float weight, Color mainColor,
-            Color dopColor, bool tube, bool line, Vagon.VagonCount count) 
+            Color dopColor, bool tube, bool line, VagonCount count) 
             : base(maxSpeed, weight, mainColor, dopColor, count)
         {
             MaxSpeed = maxSpeed;
@@ -39,7 +39,8 @@ namespace Laba
                 Tube = Convert.ToBoolean(strs[5]);
                
             }
-        }
+        }
+
 
         public override void DrawLoc(Graphics g)
         {
