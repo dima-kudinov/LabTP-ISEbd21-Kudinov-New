@@ -47,7 +47,7 @@
             this.buttonCreateLoc.TabIndex = 1;
             this.buttonCreateLoc.Text = "Создать";
             this.buttonCreateLoc.UseVisualStyleBackColor = true;
-            this.buttonCreateLoc.Click += new System.EventHandler(this.buttonCreate_Click);
+            this.buttonCreateLoc.Click += new System.EventHandler(this.buttonCreateLoc_Click);
             // 
             // buttonDown
             // 
@@ -110,7 +110,7 @@
             this.buttonCreateTepl.TabIndex = 6;
             this.buttonCreateTepl.Text = "Создать";
             this.buttonCreateTepl.UseVisualStyleBackColor = true;
-            this.buttonCreateTepl.Click += new System.EventHandler(this.button2_Click);
+            this.buttonCreateTepl.Click += new System.EventHandler(this.buttonCreateTepl_Click);
             // 
             // FormLoc
             // 
