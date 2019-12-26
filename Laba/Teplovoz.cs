@@ -15,7 +15,7 @@ namespace Laba
 
 
         public Teplovoz(int maxSpeed, float weight, Color mainColor,
-            Color dopColor, bool tube, bool line, Vagon.VagonCount count) 
+            Color dopColor, bool tube, bool line, VagonCount count) 
             : base(maxSpeed, weight, mainColor, dopColor, count)
         {
             MaxSpeed = maxSpeed;
@@ -145,4 +145,5 @@ namespace Laba
             return base.GetHashCode();
         }
     }
-}
+}
+
