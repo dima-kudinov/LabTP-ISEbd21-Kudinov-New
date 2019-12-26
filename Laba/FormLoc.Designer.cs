@@ -41,11 +41,13 @@
             // 
             // buttonCreateLoc
             // 
+
             this.buttonCreateLoc.Location = new System.Drawing.Point(1294, 12);
             this.buttonCreateLoc.Name = "buttonCreateLoc";
             this.buttonCreateLoc.Size = new System.Drawing.Size(224, 23);
             this.buttonCreateLoc.TabIndex = 1;
             this.buttonCreateLoc.Text = "Создать Локомотив";
+
             this.buttonCreateLoc.UseVisualStyleBackColor = true;
             this.buttonCreateLoc.Click += new System.EventHandler(this.buttonCreateLoc_Click);
             // 
@@ -104,6 +106,7 @@
             // 
             // buttonCreateTepl
             // 
+
             this.buttonCreateTepl.Location = new System.Drawing.Point(1294, 71);
             this.buttonCreateTepl.Name = "buttonCreateTepl";
             this.buttonCreateTepl.Size = new System.Drawing.Size(224, 23);
