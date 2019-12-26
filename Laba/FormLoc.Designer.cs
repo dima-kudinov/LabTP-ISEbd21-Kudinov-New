@@ -104,7 +104,9 @@
             // 
             // buttonCreateTepl
             // 
+
             this.buttonCreateTepl.Location = new System.Drawing.Point(1424, 71);
+
             this.buttonCreateTepl.Name = "buttonCreateTepl";
             this.buttonCreateTepl.Size = new System.Drawing.Size(94, 23);
             this.buttonCreateTepl.TabIndex = 6;
