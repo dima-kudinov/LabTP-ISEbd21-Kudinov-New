@@ -47,7 +47,6 @@ namespace Laba
                 p.Add(new Point(Posx + 5 - shiftX, Posy + 45));
                 p.Add(new Point(Posx + 5 - shiftX, Posy + 45));
 
-               //  g.FillPolygon(b, p.ToArray<Point>());
             }
         }
     }
