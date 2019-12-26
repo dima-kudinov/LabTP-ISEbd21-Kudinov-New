@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormLoc));
-            this.buttonCreateLoc = new System.Windows.Forms.Button();
+            this.buttonCreate = new System.Windows.Forms.Button();
             this.buttonDown = new System.Windows.Forms.Button();
             this.buttonUp = new System.Windows.Forms.Button();
             this.buttonRight = new System.Windows.Forms.Button();
@@ -38,15 +38,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLoc)).BeginInit();
             this.SuspendLayout();
             // 
-            // buttonCreateLoc
+            // buttonCreate
             // 
-            this.buttonCreateLoc.Location = new System.Drawing.Point(1424, 12);
-            this.buttonCreateLoc.Name = "buttonCreateLoc";
-            this.buttonCreateLoc.Size = new System.Drawing.Size(94, 23);
-            this.buttonCreateLoc.TabIndex = 1;
-            this.buttonCreateLoc.Text = "Создать";
-            this.buttonCreateLoc.UseVisualStyleBackColor = true;
-            this.buttonCreateLoc.Click += new System.EventHandler(this.buttonCreate_Click);
+            this.buttonCreate.Location = new System.Drawing.Point(1424, 12);
+            this.buttonCreate.Name = "buttonCreate";
+            this.buttonCreate.Size = new System.Drawing.Size(94, 23);
+            this.buttonCreate.TabIndex = 1;
+            this.buttonCreate.Text = "Создать";
+            this.buttonCreate.UseVisualStyleBackColor = true;
+            this.buttonCreate.Click += new System.EventHandler(this.buttonCreate_Click);
             // 
             // buttonDown
             // 
@@ -110,7 +110,7 @@
             this.Controls.Add(this.buttonUp);
             this.Controls.Add(this.buttonRight);
             this.Controls.Add(this.buttonLeft);
-            this.Controls.Add(this.buttonCreateLoc);
+            this.Controls.Add(this.buttonCreate);
             this.Controls.Add(this.pictureBoxLoc);
             this.Name = "FormLoc";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
@@ -124,7 +124,7 @@
         #endregion
 
         private System.Windows.Forms.PictureBox pictureBoxLoc;
-        private System.Windows.Forms.Button buttonCreateLoc;
+        private System.Windows.Forms.Button buttonCreate;
         private System.Windows.Forms.Button buttonLeft;
         private System.Windows.Forms.Button buttonRight;
         private System.Windows.Forms.Button buttonUp;
