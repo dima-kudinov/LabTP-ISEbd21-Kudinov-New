@@ -26,14 +26,6 @@ namespace Laba
             Posy = posY;
         }
 
-        public enum VagonCount
-        {
-            NULL,
-            ONE,
-            TWO,
-            THREE
-        }
-
         private int CountToInt(VagonCount vagonCount)
         {
             return (int)vagonCount + 1;
@@ -55,7 +47,6 @@ namespace Laba
                 p.Add(new Point(Posx + 5 - shiftX, Posy + 45));
                 p.Add(new Point(Posx + 5 - shiftX, Posy + 45));
 
-               //  g.FillPolygon(b, p.ToArray<Point>());
             }
         }
     }
