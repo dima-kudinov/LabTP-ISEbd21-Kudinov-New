@@ -9,16 +9,12 @@ namespace Laba
 {
     public class locomotive : Train
     {
-
         protected const int locWidth = 150;
         protected const int locHeight = 80;
         
         public Color DopColor { protected set; get; }
-
         public VagonCount Count { protected set; get; }
-
         protected int vagonType;
-
         public locomotive(int maxSpeed, float weight, Color mainColor, Color dopColor, VagonCount count)
         {
             MaxSpeed = maxSpeed;
@@ -66,13 +62,9 @@ namespace Laba
                     break;
             }
         }
-
         public override void DrawLoc(Graphics g)
         {
             Pen pen = new Pen(Color.Black);
-
-           
-            
             Brush b = new SolidBrush(MainColor);
             List<Point> p = new List<Point>(11);
             p.Add(new Point(Posx + 10, Posy + 15));
@@ -85,7 +77,6 @@ namespace Laba
 
             g.FillPolygon(b, p.ToArray<Point>());
 
-            
             IVagon vagon;
 
             switch (vagonType)

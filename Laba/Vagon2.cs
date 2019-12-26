@@ -26,7 +26,6 @@ namespace Laba
             Posy = posY;
         }
 
-
         private int CountToInt(VagonCount vagonCount)
         {
             return (int)vagonCount + 1;

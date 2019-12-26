@@ -12,6 +12,5 @@ namespace Laba
         void SetPosition(int x, int y, int wight, int height);
         void MoveTransport(Direction direction);
         void DrawLoc(Graphics g);
-
     }
 }

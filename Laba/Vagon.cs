@@ -9,8 +9,7 @@ namespace Laba
 {
     public class Vagon : IVagon
     {
-        public VagonCount count;
-       
+        public VagonCount count;     
         public Color MainColor { private set; get; }
         public Color DopColor { private set; get; }
         public int Posx;
