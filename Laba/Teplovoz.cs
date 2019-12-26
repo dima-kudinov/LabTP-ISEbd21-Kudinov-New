@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Laba
 {
-    public class Teplovoz : locomotive
+    public class Teplovoz : locomotive, IComparable<Teplovoz>, IEquatable<Teplovoz>
     {
         public bool Tube { protected set; get; }
         public bool Line { protected set; get; }
@@ -74,5 +74,75 @@ namespace Laba
            Tube;
         }
 
+        public int CompareTo(Teplovoz other)
+        {
+            var res = (this is locomotive).CompareTo(other is locomotive);
+            if (res != 0)
+            {
+                return res;
+            }
+            if (DopColor != other.DopColor)
+            {
+                DopColor.Name.CompareTo(other.DopColor.Name);
+            }
+            if (Line != other.Line)
+            {
+                return Line.CompareTo(other.Line);
+            }
+            if (Tube != other.Tube)
+            {
+                return Tube.CompareTo(other.Tube);
+            }
+          
+            return 0;
+        }
+ 
+        public bool Equals(Teplovoz other)
+        {
+            var res = (this as locomotive).Equals(other as locomotive);
+            if (!res)
+            {
+                return res;
+            }
+            if (GetType().Name != other.GetType().Name)
+            {
+                return false;
+            }
+            if (DopColor != other.DopColor)
+            {
+                return false;
+            }
+            if (Line != other.Line)
+            {
+                return false;
+            }
+          
+        if (Tube != other.Tube)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public override bool Equals(Object obj)
+        {
+            if (obj == null)
+            {
+                return false;
+            }
+            if (!(obj is Teplovoz locObj))
+            {
+                return false;
+            }
+            else
+            {
+                return Equals(locObj);
+            }
+        }
+  
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
     }
-}
+}

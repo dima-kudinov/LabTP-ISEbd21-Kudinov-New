@@ -22,12 +22,14 @@ namespace Laba
         public MultiLevelParking(int countStages, int pictureWidth, int pictureHeight)
         {
             parkingStages = new List<Parking<ITransport>>();
+            this.pictureWidth = pictureWidth;
+            this.pictureHeight = pictureHeight;
             for (int i = 0; i < countStages; ++i)
             {
                 parkingStages.Add(new Parking<ITransport>(countPlaces, pictureWidth,
                pictureHeight));
             }
-        }
+        }
         /// Индексатор
         public Parking<ITransport> this[int ind]
         {
@@ -40,7 +42,7 @@ namespace Laba
                 return null;
             }
         }
-        public bool SaveData(string filename)
+        public void SaveData(string filename)
         {
             if (File.Exists(filename))
             {
@@ -54,32 +56,28 @@ namespace Laba
                 {
                     //Начинаем уровень
                     sw.WriteLine("level");
-                    for (int i = 0; i < countPlaces; i++)
+                    foreach (ITransport loc in level)
                     {
-                        var locomotive = level[i];
-                        if (locomotive != null)
+                        //Записываем тип мшаины
+                        if (loc.GetType().Name == "locomotive")
                         {
-                            //если место не пустое
-                            //Записываем тип мшаины
-                            if (locomotive.GetType().Name == "locomotive")
-                            {
-                                sw.Write(i + ":locomotive:");
-                            }
-                            if (locomotive.GetType().Name == "Teplovoz")
-                            {
-                                sw.Write(i + ":Teplovoz:");
-                            }
-                            //Записываемые параметры
-                            sw.WriteLine(locomotive);
+                            sw.Write(level.GetKey + ":locomotive:");
                         }
+                        if (loc.GetType().Name == "Teplovoz")
+                        {
+                            sw.Write(level.GetKey + ":Teplovoz:");
+                        }
+                        //Записываемые параметры
+                        sw.WriteLine(loc + Environment.NewLine);
                     }
                 }
-                
             }
-            return true;
         }
+                
+            
+           
 
-        public bool LoadData(string filename)
+        public void LoadData(string filename)
         {
             if (!File.Exists(filename))
             {
@@ -99,7 +97,7 @@ namespace Laba
                 }
                 else
                 {
-                    return false;
+                    return;
                 }
 
                 int counter = -1;
@@ -130,7 +128,11 @@ namespace Laba
                     parkingStages[counter][Convert.ToInt32(strs.Split(':')[0])] = locomotive;
                 }
             }
-            return true;
+            
+        }
+        public void Sort()
+        {
+            parkingStages.Sort();
         }
     }
 }

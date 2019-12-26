@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -7,16 +8,28 @@ using System.Threading.Tasks;
 
 namespace Laba
 {
-    public class Parking<T> where T : class, ITransport
+    public class Parking<T> : IEnumerator<T>, IEnumerable<T>, IComparable<Parking<T>>
+        where T : class, ITransport
     {
         private Dictionary<int, T> _places;
-         private int _maxCount;
+        private int _maxCount;
 
         private int PictureWidth { get; set; }
         private int PictureHeight { get; set; }
-         private const int _placeSizeWidth = 210;
-        private const int _placeSizeHeight = 80;
 
+        private const int _placeSizeWidth = 210;
+        private const int _placeSizeHeight = 80;
+        private int _currentIndex;
+        /// <summary>
+        /// Получить порядковое место на парковке
+        /// </summary>
+        public int GetKey
+        {
+            get
+            {
+                return _places.Keys.ToList()[_currentIndex];
+            }
+        }
         public Parking(int sizes, int pictureWidth, int pictureHeight)
         {
             _maxCount = sizes;
@@ -25,17 +38,21 @@ namespace Laba
             PictureHeight = pictureHeight;
         }
 
-        public static int operator +(Parking<T> p, T car)
+        public static int operator +(Parking<T> p, T loc)
         {
             if (p._places.Count == p._maxCount)
             {
                 throw new ParkingOverflowException();
             }
+            if (p._places.ContainsValue(loc))
+            {
+                throw new ParkingAlreadyHaveException();
+            }
             for (int i = 0; i < p._maxCount; i++)
             {
                 if (p.CheckFreePlace(i))
                 {
-                    p._places.Add(i, car);
+                    p._places.Add(i, loc);
                     p._places[i].SetPosition(5 + i / 5 * _placeSizeWidth + 5,
                      i % 5 * _placeSizeHeight + 15, p.PictureWidth,
                     p.PictureHeight);
@@ -45,7 +62,7 @@ namespace Laba
             return -1;
         }
 
-    public static T operator -(Parking<T> p, int index)
+        public static T operator -(Parking<T> p, int index)
         {
             if (!p.CheckFreePlace(index))
             {
@@ -56,7 +73,7 @@ namespace Laba
             throw new ParkingNotFoundException(index);
         }
 
-     private bool CheckFreePlace(int index)
+        private bool CheckFreePlace(int index)
         {
             return !_places.ContainsKey(index);
         }
@@ -84,6 +101,8 @@ namespace Laba
                 g.DrawLine(pen, i * _placeSizeWidth, 0, i * _placeSizeWidth, 400);
             }
         }
+
+
         public T this[int ind]
         {
             get
@@ -105,12 +124,109 @@ namespace Laba
                 else
                 {
                     throw new ParkingOccupiedPlaceException(ind);
-                }
+                }
+
             }
         }
+        public T Current
+        {
+            get
+            {
+                return _places[_places.Keys.ToList()[_currentIndex]];
+            }
+        }
+        /// <summary>
+        /// Метод интерфейса IEnumerator для получения текущего элемента
+        /// </summary>
+        object IEnumerator.Current
+        {
+            get
+            {
+                return Current;
+            }
+        }
+
+        public void Dispose()
+        {
+            _places.Clear();
+        }
+
+        public bool MoveNext()
+        {
+            if (_currentIndex + 1 >= _places.Count)
+            {
+                Reset();
+                return false;
+            }
+            _currentIndex++;
+            return true;
+        }
+
+        public void Reset()
+        {
+            _currentIndex = -1;
+        }
+        /// <summary>
+        /// Метод интерфейса IEnumerable
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerator<T> GetEnumerator()
+        {
+            return this;
+        }
+        /// <summary>
+        /// Метод интерфейса IEnumerable
+        /// </summary>
+        /// <returns></returns>
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
+        /// <summary>
+        /// Метод интерфейса IComparable
+        /// </summary>
+        /// <param name="other"></param>
+        /// <returns></returns>
+        public int CompareTo(Parking<T> other)
+        {
+            if (_places.Count > other._places.Count)
+            {
+                return -1;
+            }
+            else if (_places.Count < other._places.Count)
+
+            {
+                return 1;
+            }
+            else if (_places.Count > 0)
+            {
+                var thisKeys = _places.Keys.ToList();
+                var otherKeys = other._places.Keys.ToList();
+                for (int i = 0; i < _places.Count; ++i)
+                {
+                    if (_places[thisKeys[i]] is locomotive && other._places[thisKeys[i]] is Teplovoz)
+                    {
+                        return 1;
+                    }
+                    if (_places[thisKeys[i]] is Teplovoz && other._places[thisKeys[i]] is locomotive)
+                    {
+                        return -1;
+                    }
+                    if (_places[thisKeys[i]] is locomotive && other._places[thisKeys[i]] is locomotive)
+                    {
+                        return (_places[thisKeys[i]] is locomotive).CompareTo(other._places[thisKeys[i]] is locomotive);
+                    }
+                    if (_places[thisKeys[i]] is Teplovoz && other._places[thisKeys[i]] is Teplovoz)
+                    {
+                        return (_places[thisKeys[i]] is Teplovoz).CompareTo(other._places[thisKeys[i]] is Teplovoz);
+                    }
+                }
+            }
+            return 0;
+        }
     }
-    
 }
+
 
 
 
