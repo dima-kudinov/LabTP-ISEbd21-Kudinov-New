@@ -80,7 +80,8 @@ namespace Laba
                     }
                 }
             }
-        }
+        }
+
         /// <summary>
         /// Метод обработки выбора элемента на listBoxLevels
         /// </summary>
@@ -129,7 +130,8 @@ namespace Laba
                     logger.Error("Неизвестная ошибка");
                 }
             }
-        }
+        }
+
 
         private void сохранитьToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -184,4 +186,4 @@ namespace Laba
             }
         }
     }
-}
+}

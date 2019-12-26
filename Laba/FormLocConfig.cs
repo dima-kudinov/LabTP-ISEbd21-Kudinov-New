@@ -29,9 +29,7 @@ namespace Laba
 
             buttonCancel.Click += (object sender, EventArgs e) => { Close(); };
         }
-        /// <summary>
-        /// Отрисовать машину
-        /// </summary>
+    
         private void DrawLoc()
         {
             if (locomotive != null)
@@ -54,33 +52,20 @@ namespace Laba
             {
                 eventAddLoc += ev;
             }
-        }
-        /// <summary>
-        /// Передаем информацию при нажатии на Label
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        }
         private void labelLoc_MouseDown(object sender, MouseEventArgs e)
         {
             labelLoc.DoDragDrop(labelLoc.Text, DragDropEffects.Move |
            DragDropEffects.Copy);
             
         }
-        /// <summary>
-        /// Передаем информацию при нажатии на Label
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+
         private void labelTepl_MouseDown(object sender, MouseEventArgs e)
         {
             labelTepl.DoDragDrop(labelTepl.Text, DragDropEffects.Move |
            DragDropEffects.Copy);
         }
-        /// <summary>
-        /// Проверка получаемой информации (ее типа на соответствие требуемому)
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+
         private void panelLoc_DragEnter(object sender, DragEventArgs e)
         {
             if (e.Data.GetDataPresent(DataFormats.Text))
@@ -92,11 +77,7 @@ namespace Laba
                 e.Effect = DragDropEffects.None;
             }
         }
-        /// <summary>
-        /// Действия при приеме перетаскиваемой информации
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+
         private void panelLoc_DragDrop(object sender, DragEventArgs e)
         {
             switch (e.Data.GetData(DataFormats.Text).ToString())
@@ -112,25 +93,12 @@ namespace Laba
             DrawLoc();
         }
 
-        
-
-
- /// <summary>
-
- /// Отправляем цвет с панели
- /// </summary>
- /// <param name="sender"></param>
- /// <param name="e"></param>
         private void panelColor_MouseDown(object sender, MouseEventArgs e)
         {
             (sender as Control).DoDragDrop((sender as Control).BackColor,
            DragDropEffects.Move | DragDropEffects.Copy);
         }
-        /// <summary>
-        /// Проверка получаемой информации (ее типа на соответствие требуемому)
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+
         private void labelBaseColor_DragEnter(object sender, DragEventArgs e)
         {
             if (e.Data.GetDataPresent(typeof(Color)))
@@ -142,11 +110,7 @@ namespace Laba
                 e.Effect = DragDropEffects.None;
             }
         }
-        /// <summary>
-        /// Принимаем основной цвет
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+
         private void labelBaseColor_DragDrop(object sender, DragEventArgs e)
         {
             if (locomotive != null)
@@ -155,11 +119,7 @@ namespace Laba
                 DrawLoc();
             }
         }
-        /// <summary>
-        /// Принимаем дополнительный цвет
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+
         private void labelDopColor_DragDrop(object sender, DragEventArgs e)
         {
             if (locomotive != null)

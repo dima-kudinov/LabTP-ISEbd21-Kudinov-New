@@ -39,7 +39,8 @@ namespace Laba
                 Tube = Convert.ToBoolean(strs[5]);
                
             }
-        }
+        }
+
 
         public override void DrawLoc(Graphics g)
         {

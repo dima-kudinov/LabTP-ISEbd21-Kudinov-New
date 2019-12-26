@@ -105,11 +105,11 @@ namespace Laba
                 else
                 {
                     throw new ParkingOccupiedPlaceException(ind);
-                }
+                }
+
             }
         }
-    }
-    
+    }   
 }
 
 

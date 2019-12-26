@@ -76,11 +76,6 @@ namespace Laba
                     break;
             }
             Draw();
-        }
-
-   
-    }
-
-
-    
+        }  
+    }   
 }

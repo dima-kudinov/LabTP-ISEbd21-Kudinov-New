@@ -35,7 +35,8 @@ namespace Laba
                 Weight = Convert.ToInt32(strs[1]);
                 MainColor = Color.FromName(strs[2]);
             }
-        }
+        }
+
         public override void MoveTransport(Direction direction)
         {
             float step1 = MaxSpeed * 100 / Weight;
