@@ -1,3 +1,4 @@
+
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,7 +13,8 @@ namespace Laba
 {
     public partial class FormLoc : Form
     {
-        private ITransport loc;
+        private ITransport loc;
+
         public FormLoc()
         {
             InitializeComponent();
