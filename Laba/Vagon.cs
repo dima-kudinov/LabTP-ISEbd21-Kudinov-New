@@ -26,13 +26,7 @@ namespace Laba
             Posy = posY;
         }
 
-        public enum VagonCount
-        {
-            NULL,
-            ONE,
-            TWO,
-            THREE
-        }
+        
 
         private int CountToInt(VagonCount vagonCount)
         {
