@@ -32,7 +32,7 @@ namespace Laba
             pictureBoxLoc.Image = bmp;
         }
         
-        private void buttonCreate_Click(object sender, EventArgs e)
+        private void buttonCreateLoc_Click(object sender, EventArgs e)
         {
             Random rnd = new Random();
             Vagon.VagonCount Count = Vagon.VagonCount.THREE;
@@ -46,7 +46,7 @@ namespace Laba
             Draw();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void buttonCreateTepl_Click(object sender, EventArgs e)
         {
             Random rnd = new Random();
             Vagon.VagonCount Count = Vagon.VagonCount.THREE;
@@ -82,7 +82,7 @@ namespace Laba
             Draw();
         }
 
-   
+       
     }
 
 
