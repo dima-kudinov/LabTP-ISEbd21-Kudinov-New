@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -11,9 +11,6 @@ namespace Laba
     {
         public bool Tube { protected set; get; }
         public bool Line { protected set; get; }
-
-
-
         public Teplovoz(int maxSpeed, float weight, Color mainColor,
             Color dopColor, bool tube, bool line, Vagon.VagonCount count) 
             : base(maxSpeed, weight, mainColor, dopColor, count)
@@ -39,7 +36,8 @@ namespace Laba
                 Tube = Convert.ToBoolean(strs[5]);
                
             }
-        }
+        }
+
 
         public override void DrawLoc(Graphics g)
         {
@@ -72,6 +70,5 @@ namespace Laba
             return base.ToString() + ";" + DopColor.Name + ";" + Line + ";" +
            Tube;
         }
-
     }
 }

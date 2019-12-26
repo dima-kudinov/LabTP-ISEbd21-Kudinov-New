@@ -40,7 +40,6 @@
             this.SuspendLayout();
             // 
             // buttonCreateLoc
-            // 
             this.buttonCreateLoc.Location = new System.Drawing.Point(1294, 12);
             this.buttonCreateLoc.Name = "buttonCreateLoc";
             this.buttonCreateLoc.Size = new System.Drawing.Size(224, 23);
