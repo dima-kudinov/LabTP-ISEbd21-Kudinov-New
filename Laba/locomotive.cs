@@ -15,10 +15,10 @@ namespace Laba
         
         public Color DopColor { protected set; get; }
 
-        public Vagon.VagonCount Count { protected set; get; }
+        public VagonCount Count { protected set; get; }
 
 
-        public locomotive(int maxSpeed, float weight, Color mainColor, Color dopColor,Vagon.VagonCount count)
+        public locomotive(int maxSpeed, float weight, Color mainColor, Color dopColor,VagonCount count)
         {
             MaxSpeed = maxSpeed;
             Weight = weight;
@@ -35,7 +35,8 @@ namespace Laba
                 Weight = Convert.ToInt32(strs[1]);
                 MainColor = Color.FromName(strs[2]);
             }
-        }
+        }
+
         public override void MoveTransport(Direction direction)
         {
             float step1 = MaxSpeed * 100 / Weight;
