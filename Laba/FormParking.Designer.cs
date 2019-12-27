@@ -36,7 +36,7 @@
             this.buttonTakeLoc = new System.Windows.Forms.Button();
             this.maskedTextBox = new System.Windows.Forms.MaskedTextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.labelName = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxParking)).BeginInit();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTakeLoc)).BeginInit();
@@ -119,20 +119,20 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "Место";
             // 
-            // label3
+            // labelName
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(356, 464);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(138, 17);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Ульяновское ДЕПО";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
+            this.labelName.AutoSize = true;
+            this.labelName.Location = new System.Drawing.Point(356, 464);
+            this.labelName.Name = "labelName";
+            this.labelName.Size = new System.Drawing.Size(138, 17);
+            this.labelName.TabIndex = 4;
+            this.labelName.Text = "Ульяновское ДЕПО";
+            this.labelName.Click += new System.EventHandler(this.label3_Click);
             // 
             // FormParking
             // 
             this.ClientSize = new System.Drawing.Size(979, 543);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.labelName);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.buttonSetTepl);
             this.Controls.Add(this.buttonSetLoc);
@@ -164,6 +164,6 @@
         private System.Windows.Forms.Button buttonTakeLoc;
         private System.Windows.Forms.MaskedTextBox maskedTextBox;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label labelName;
     }
 }
