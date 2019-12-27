@@ -24,13 +24,13 @@ namespace Laba
         public Color MainColor { private set; get; }
         public Color DopColor { private set; get; }
 
-        public Vagon.VagonCount Count { private set; get; }
+        public VagonCount Count { private set; get; }
 
         public bool Tube { private set; get; }
         public bool Line { private set; get; }
 
         public locomotive(int maxSpeed, float weight, Color mainColor, Color dopColor,
-bool tube, bool line, Vagon.VagonCount count)
+bool tube, bool line, VagonCount count)
         {
             MaxSpeed = maxSpeed;
             Weight = weight;

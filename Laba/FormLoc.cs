@@ -31,7 +31,7 @@ namespace Laba
         private void buttonCreate_Click(object sender, EventArgs e)
         {
             Random rnd = new Random();
-            Vagon.VagonCount Count = Vagon.VagonCount.THREE;
+            VagonCount Count = VagonCount.THREE;
             loc = new locomotive(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.Green,
            Color.Red, true, true, Count);
             loc.SetPosition(rnd.Next(500, 600), rnd.Next(10, 100), pictureBoxLoc.Width,
