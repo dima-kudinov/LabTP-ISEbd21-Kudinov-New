@@ -35,10 +35,8 @@ namespace Laba
         private void buttonCreateLoc_Click(object sender, EventArgs e)
         {
             Random rnd = new Random();
-            VagonCount Count = VagonCount.THREE;
-
             loc = new locomotive(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.Green,
-           Color.Red, Count);
+           Color.Red);
 
             loc.SetPosition(rnd.Next(500, 600), rnd.Next(10, 100), pictureBoxLoc.Width,
            pictureBoxLoc.Height);
@@ -49,10 +47,8 @@ namespace Laba
         private void buttonCreateTepl_Click(object sender, EventArgs e)
         {
             Random rnd = new Random();
-            VagonCount Count = VagonCount.THREE;
-
             loc = new Teplovoz(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.Green,
-           Color.Red, true, true, Count);
+           Color.Red, true, true);
 
             loc.SetPosition(rnd.Next(500, 600), rnd.Next(10, 100), pictureBoxLoc.Width,
            pictureBoxLoc.Height);

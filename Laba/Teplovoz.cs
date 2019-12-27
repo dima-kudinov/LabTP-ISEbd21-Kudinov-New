@@ -14,8 +14,8 @@ namespace Laba
 
 
         public Teplovoz(int maxSpeed, float weight, Color mainColor,
-            Color dopColor, bool tube, bool line,VagonCount count) 
-            : base(maxSpeed, weight, mainColor, dopColor, count)
+            Color dopColor, bool tube, bool line) 
+            : base(maxSpeed, weight, mainColor, dopColor)
         {
             MaxSpeed = maxSpeed;
             Weight = weight;
@@ -23,7 +23,7 @@ namespace Laba
             DopColor = dopColor;
             Line = line;
             Tube = tube;
-            Count = count;
+            
         }
 
         public override void DrawLoc(Graphics g)

@@ -43,7 +43,7 @@ namespace Laba
             ColorDialog dialog = new ColorDialog();
             if (dialog.ShowDialog() == DialogResult.OK)
             {
-                var car = new locomotive(100, 1000, dialog.Color, Color.Red, 0);
+                var car = new locomotive(100, 1000, dialog.Color, Color.Red);
                 int place = parking + car;
                 Draw();
             }
@@ -62,7 +62,7 @@ namespace Laba
                 if (dialogDop.ShowDialog() == DialogResult.OK)
                 {
                     var car = new Teplovoz(100, 1000, dialog.Color, dialogDop.Color,
-                   true, true, 0);
+                   true, true);
                     int place = parking + car;
                     Draw();
                 }
@@ -75,9 +75,9 @@ namespace Laba
         /// <param name="e"></param>
         private void buttonTakeLoc_Click(object sender, EventArgs e)
         {
-            if (maskedTextBox.Text != "")
+            if (maskedTextBoxPlace.Text != "")
             {
-                var car = parking - Convert.ToInt32(maskedTextBox.Text);
+                var car = parking - Convert.ToInt32(maskedTextBoxPlace.Text);
                 if (car != null)
                 {
                     Bitmap bmp = new Bitmap(pictureBoxTakeLoc.Width,
@@ -96,16 +96,6 @@ namespace Laba
                 }
                 Draw();
             }
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
