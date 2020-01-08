@@ -15,16 +15,12 @@ namespace Laba
         
         public Color DopColor { protected set; get; }
 
-        public VagonCount Count { protected set; get; }
-
-
-        public locomotive(int maxSpeed, float weight, Color mainColor, Color dopColor,VagonCount count)
+        public locomotive(int maxSpeed, float weight, Color mainColor, Color dopColor)
         {
             MaxSpeed = maxSpeed;
             Weight = weight;
             MainColor = mainColor;
             DopColor = dopColor;
-            Count = count;
         }
 
         public override void MoveTransport(Direction direction)
@@ -82,16 +78,10 @@ namespace Laba
             p.Add(new Point(Posx + 75, Posy + 15));
 
             g.FillPolygon(b, p.ToArray<Point>());
-
-            
-            Vagon vagon = new Vagon(Count,
-               MainColor, DopColor, Posx, Posy);
-            vagon.DrawVagon(g);
         }
         public void SetDopColor(Color color)
         {
             DopColor = color;
         }
- 
     }
 }

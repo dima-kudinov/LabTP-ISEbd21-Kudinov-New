@@ -46,10 +46,10 @@ namespace Laba
         {
             if (listBoxLevels.SelectedIndex > -1)
             {
-                if (maskedTextBox.Text != "")
+                if (maskedTextBoxPlace.Text != "")
                 {
                     var locomotive = parking[listBoxLevels.SelectedIndex] -
-                   Convert.ToInt32(maskedTextBox.Text);
+                   Convert.ToInt32(maskedTextBoxPlace.Text);
                     if (locomotive != null)
                     {
                         Bitmap bmp = new Bitmap(pictureBoxTakeLoc.Width,

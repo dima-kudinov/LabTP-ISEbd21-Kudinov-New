@@ -29,16 +29,16 @@
         private void InitializeComponent()
         {
             this.pictureBoxParking = new System.Windows.Forms.PictureBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBoxTake = new System.Windows.Forms.GroupBox();
             this.pictureBoxTakeLoc = new System.Windows.Forms.PictureBox();
             this.buttonTakeLoc = new System.Windows.Forms.Button();
-            this.maskedTextBox = new System.Windows.Forms.MaskedTextBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.maskedTextBoxPlace = new System.Windows.Forms.MaskedTextBox();
+            this.labelPlace = new System.Windows.Forms.Label();
             this.labelName = new System.Windows.Forms.Label();
             this.listBoxLevels = new System.Windows.Forms.ListBox();
             this.buttonSetLoc = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxParking)).BeginInit();
-            this.groupBox2.SuspendLayout();
+            this.groupBoxTake.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTakeLoc)).BeginInit();
             this.SuspendLayout();
             // 
@@ -51,18 +51,18 @@
             this.pictureBoxParking.TabIndex = 0;
             this.pictureBoxParking.TabStop = false;
             // 
-            // groupBox2
+            // groupBoxTake
             // 
-            this.groupBox2.Controls.Add(this.pictureBoxTakeLoc);
-            this.groupBox2.Controls.Add(this.buttonTakeLoc);
-            this.groupBox2.Controls.Add(this.maskedTextBox);
-            this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Location = new System.Drawing.Point(762, 296);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(223, 246);
-            this.groupBox2.TabIndex = 3;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Забрать локомотив";
+            this.groupBoxTake.Controls.Add(this.pictureBoxTakeLoc);
+            this.groupBoxTake.Controls.Add(this.buttonTakeLoc);
+            this.groupBoxTake.Controls.Add(this.maskedTextBoxPlace);
+            this.groupBoxTake.Controls.Add(this.labelPlace);
+            this.groupBoxTake.Location = new System.Drawing.Point(762, 296);
+            this.groupBoxTake.Name = "groupBoxTake";
+            this.groupBoxTake.Size = new System.Drawing.Size(223, 246);
+            this.groupBoxTake.TabIndex = 3;
+            this.groupBoxTake.TabStop = false;
+            this.groupBoxTake.Text = "Забрать локомотив";
             // 
             // pictureBoxTakeLoc
             // 
@@ -82,21 +82,21 @@
             this.buttonTakeLoc.UseVisualStyleBackColor = true;
             this.buttonTakeLoc.Click += new System.EventHandler(this.buttonTakeLoc_Click);
             // 
-            // maskedTextBox
+            // maskedTextBoxPlace
             // 
-            this.maskedTextBox.Location = new System.Drawing.Point(88, 21);
-            this.maskedTextBox.Name = "maskedTextBox";
-            this.maskedTextBox.Size = new System.Drawing.Size(117, 22);
-            this.maskedTextBox.TabIndex = 1;
+            this.maskedTextBoxPlace.Location = new System.Drawing.Point(88, 21);
+            this.maskedTextBoxPlace.Name = "maskedTextBoxPlace";
+            this.maskedTextBoxPlace.Size = new System.Drawing.Size(117, 22);
+            this.maskedTextBoxPlace.TabIndex = 1;
             // 
-            // label2
+            // labelPlace
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(20, 26);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(49, 17);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Место";
+            this.labelPlace.AutoSize = true;
+            this.labelPlace.Location = new System.Drawing.Point(20, 26);
+            this.labelPlace.Name = "labelPlace";
+            this.labelPlace.Size = new System.Drawing.Size(49, 17);
+            this.labelPlace.TabIndex = 0;
+            this.labelPlace.Text = "Место";
             // 
             // labelName
             // 
@@ -133,12 +133,12 @@
             this.Controls.Add(this.buttonSetLoc);
             this.Controls.Add(this.listBoxLevels);
             this.Controls.Add(this.labelName);
-            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.groupBoxTake);
             this.Controls.Add(this.pictureBoxParking);
             this.Name = "FormParking";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxParking)).EndInit();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
+            this.groupBoxTake.ResumeLayout(false);
+            this.groupBoxTake.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTakeLoc)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -146,20 +146,12 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBoxParking;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox groupBoxTake;
         private System.Windows.Forms.PictureBox pictureBoxTakeLoc;
         private System.Windows.Forms.Button buttonTakeLoc;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.MaskedTextBox maskedTextBoxPlace;
+        private System.Windows.Forms.Label labelPlace;
         private System.Windows.Forms.Label labelName;
         private System.Windows.Forms.ListBox listBoxLevels;
         private System.Windows.Forms.Button buttonSetLoc;
