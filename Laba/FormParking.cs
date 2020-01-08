@@ -49,7 +49,7 @@ namespace Laba
                 ColorDialog dialog = new ColorDialog();
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {
-                    var loc = new locomotive(100, 1000, dialog.Color, dialog.Color, 0);
+                    var loc = new locomotive(100, 1000, dialog.Color, dialog.Color);
                     int place = parking[listBoxLevels.SelectedIndex] + loc;
                     if (place == -1)
                     {
@@ -73,7 +73,7 @@ namespace Laba
                     if (dialogDop.ShowDialog() == DialogResult.OK)
                     {
                         var loc = new Teplovoz(100, 1000, dialog.Color,
-                       dialogDop.Color, true, true, 0);
+                       dialogDop.Color, true, true);
                         int place = parking[listBoxLevels.SelectedIndex] + loc;
                         if (place == -1)
                         {
@@ -90,10 +90,10 @@ namespace Laba
         {
             if (listBoxLevels.SelectedIndex > -1)
             {
-                if (maskedTextBox.Text != "")
+                if (maskedTextBoxPlace.Text != "")
                 {
                     var car = parking[listBoxLevels.SelectedIndex] -
-                   Convert.ToInt32(maskedTextBox.Text);
+                   Convert.ToInt32(maskedTextBoxPlace.Text);
                     if (car != null)
                     {
                         Bitmap bmp = new Bitmap(pictureBoxTakeLoc.Width,
