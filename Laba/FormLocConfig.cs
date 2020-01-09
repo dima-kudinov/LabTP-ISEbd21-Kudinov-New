@@ -102,11 +102,10 @@ namespace Laba
             switch (e.Data.GetData(DataFormats.Text).ToString())
             {
                 case "Локомотив":
-                    locomotive = new locomotive(100, 500, Color.White, Color.White,0);
+                    locomotive = new locomotive(100, 500, Color.White, Color.White);
                     break;
                 case "Тепловоз":
-                    locomotive = new Teplovoz(100, 500, Color.White, Color.Black, true, true,
-                   0);
+                    locomotive = new Teplovoz(100, 500, Color.White, Color.Black, true, true);
                     break;
             }
             DrawLoc();
