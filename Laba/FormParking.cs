@@ -49,11 +49,11 @@ namespace Laba
         {
             if (listBoxLevels.SelectedIndex > -1)
             {
-                if (maskedTextBox.Text != "")
+                if (maskedTextBoxPlace.Text != "")
                 {
                     try
                     { 
-                    var locomotive = parking[listBoxLevels.SelectedIndex] -Convert.ToInt32(maskedTextBox.Text);
+                    var locomotive = parking[listBoxLevels.SelectedIndex] -Convert.ToInt32(maskedTextBoxPlace.Text);
                   
                         Bitmap bmp = new Bitmap(pictureBoxTakeLoc.Width,
                        pictureBoxTakeLoc.Height);
@@ -62,7 +62,7 @@ namespace Laba
                        pictureBoxTakeLoc.Height);
                         locomotive.DrawLoc(gr);
                         pictureBoxTakeLoc.Image = bmp;
-                        logger.Info("Изъят автомобиль " + locomotive.ToString() + " с места "+ maskedTextBox.Text);
+                        logger.Info("Изъят автомобиль " + locomotive.ToString() + " с места "+ maskedTextBoxPlace.Text);
                         Draw();
                     }
                     catch (ParkingNotFoundException ex)

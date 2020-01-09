@@ -94,9 +94,7 @@ namespace Laba
             g.FillPolygon(b, p.ToArray<Point>());
 
             
-            Vagon vagon = new Vagon(Count,
-               MainColor, DopColor, Posx, Posy);
-            vagon.DrawVagon(g);
+           
         }
         public void SetDopColor(Color color)
         {
