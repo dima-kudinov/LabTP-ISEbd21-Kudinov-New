@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.groupBoxTake = new System.Windows.Forms.GroupBox();
+            this.groupBoxType = new System.Windows.Forms.GroupBox();
             this.labelTepl = new System.Windows.Forms.Label();
             this.labelLoc = new System.Windows.Forms.Label();
             this.groupBoxColor = new System.Windows.Forms.GroupBox();
@@ -46,22 +46,22 @@
             this.pictureBoxLoc = new System.Windows.Forms.PictureBox();
             this.buttonOk = new System.Windows.Forms.Button();
             this.buttonCancel = new System.Windows.Forms.Button();
-            this.groupBoxTake.SuspendLayout();
+            this.groupBoxType.SuspendLayout();
             this.groupBoxColor.SuspendLayout();
             this.panelLoc.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLoc)).BeginInit();
             this.SuspendLayout();
             // 
-            // groupBoxTake
+            // groupBoxType
             // 
-            this.groupBoxTake.Controls.Add(this.labelTepl);
-            this.groupBoxTake.Controls.Add(this.labelLoc);
-            this.groupBoxTake.Location = new System.Drawing.Point(29, 40);
-            this.groupBoxTake.Name = "groupBoxTake";
-            this.groupBoxTake.Size = new System.Drawing.Size(219, 206);
-            this.groupBoxTake.TabIndex = 0;
-            this.groupBoxTake.TabStop = false;
-            this.groupBoxTake.Text = "Тип кузова";
+            this.groupBoxType.Controls.Add(this.labelTepl);
+            this.groupBoxType.Controls.Add(this.labelLoc);
+            this.groupBoxType.Location = new System.Drawing.Point(29, 40);
+            this.groupBoxType.Name = "groupBoxType";
+            this.groupBoxType.Size = new System.Drawing.Size(219, 206);
+            this.groupBoxType.TabIndex = 0;
+            this.groupBoxType.TabStop = false;
+            this.groupBoxType.Text = "Тип кузова";
             // 
             // labelTepl
             // 
@@ -249,10 +249,10 @@
             this.Controls.Add(this.buttonOk);
             this.Controls.Add(this.panelLoc);
             this.Controls.Add(this.groupBoxColor);
-            this.Controls.Add(this.groupBoxTake);
+            this.Controls.Add(this.groupBoxType);
             this.Name = "FormLocConfig";
             this.Text = "FormLocConfig";
-            this.groupBoxTake.ResumeLayout(false);
+            this.groupBoxType.ResumeLayout(false);
             this.groupBoxColor.ResumeLayout(false);
             this.panelLoc.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLoc)).EndInit();
@@ -262,7 +262,7 @@
 
         #endregion
 
-        private System.Windows.Forms.GroupBox groupBoxTake;
+        private System.Windows.Forms.GroupBox groupBoxType;
         private System.Windows.Forms.Label labelTepl;
         private System.Windows.Forms.Label labelLoc;
         private System.Windows.Forms.GroupBox groupBoxColor;
