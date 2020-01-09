@@ -14,16 +14,12 @@ namespace Laba
         protected const int locHeight = 80;
         
         public Color DopColor { protected set; get; }
-
-
-
         public locomotive(int maxSpeed, float weight, Color mainColor, Color dopColor)
         {
             MaxSpeed = maxSpeed;
             Weight = weight;
             MainColor = mainColor;
             DopColor = dopColor;
-            
         }
 
         public override void MoveTransport(Direction direction)
