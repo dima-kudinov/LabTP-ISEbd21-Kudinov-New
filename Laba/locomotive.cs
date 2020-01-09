@@ -14,7 +14,6 @@ namespace Laba
         protected const int locHeight = 80;
         
         public Color DopColor { protected set; get; }
-
         public locomotive(int maxSpeed, float weight, Color mainColor, Color dopColor)
         {
             MaxSpeed = maxSpeed;
@@ -82,6 +81,7 @@ namespace Laba
         public void SetDopColor(Color color)
         {
             DopColor = color;
+
         }
     }
 }

@@ -55,8 +55,8 @@ namespace Laba
                         Bitmap bmp = new Bitmap(pictureBoxTakeLoc.Width,
                        pictureBoxTakeLoc.Height);
                         Graphics gr = Graphics.FromImage(bmp);
-                        locomotive.SetPosition(5, 5, pictureBoxTakeLoc.Width,
-                       pictureBoxTakeLoc.Height);
+                        locomotive.SetPosition(5, 5, pictureBoxTakeLoc.Width, pictureBoxTakeLoc.Height);
+
                         locomotive.DrawLoc(gr);
                         pictureBoxTakeLoc.Image = bmp;
                     }
