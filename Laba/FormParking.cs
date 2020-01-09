@@ -92,16 +92,16 @@ namespace Laba
             {
                 if (maskedTextBoxPlace.Text != "")
                 {
-                    var car = parking[listBoxLevels.SelectedIndex] -
+                    var locomotive = parking[listBoxLevels.SelectedIndex] -
                    Convert.ToInt32(maskedTextBoxPlace.Text);
-                    if (car != null)
+                    if (locomotive != null)
                     {
                         Bitmap bmp = new Bitmap(pictureBoxTakeLoc.Width,
                         pictureBoxTakeLoc.Height);
                         Graphics gr = Graphics.FromImage(bmp);
-                        car.SetPosition(5, 5, pictureBoxTakeLoc.Width,
+                        locomotive.SetPosition(5, 5, pictureBoxTakeLoc.Width,
                         pictureBoxTakeLoc.Height);
-                        car.DrawLoc(gr);
+                        locomotive.DrawLoc(gr);
                         pictureBoxTakeLoc.Image = bmp;
                     }
                     else
