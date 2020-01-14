@@ -54,7 +54,8 @@ namespace Laba
             {
                 eventAddLoc += ev;
             }
-        }
+        }
+
         /// <summary>
         /// Передаем информацию при нажатии на Label
         /// </summary>
