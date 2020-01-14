@@ -11,7 +11,7 @@ namespace Laba
     {
         /// Список с уровнями парковки
         List<Parking<ITransport>> parkingStages;
-  /// Сколько мест на каждом уровне
+        /// Сколько мест на каждом уровне
 
         private const int countPlaces = 20;
         private int pictureWidth;
@@ -42,6 +42,7 @@ namespace Laba
                 return null;
             }
         }
+
         public void SaveData(string filename)
         {
             if (File.Exists(filename))
@@ -73,9 +74,6 @@ namespace Laba
                 }
             }
         }
-                
-            
-           
 
         public void LoadData(string filename)
         {
@@ -128,8 +126,8 @@ namespace Laba
                     parkingStages[counter][Convert.ToInt32(strs.Split(':')[0])] = locomotive;
                 }
             }
-            
         }
+
         public void Sort()
         {
             parkingStages.Sort();

@@ -9,13 +9,11 @@ namespace Laba
 {
     public class locomotive : Train, IComparable<locomotive>, IEquatable<locomotive>
     {
-
         protected const int locWidth = 150;
         protected const int locHeight = 80;
         
         public Color DopColor { protected set; get; }
-
-
+        
         public locomotive(int maxSpeed, float weight, Color mainColor, Color dopColor)
         {
             MaxSpeed = maxSpeed;
@@ -23,6 +21,7 @@ namespace Laba
             MainColor = mainColor;
             DopColor = dopColor;
         }
+
         public locomotive(string info)
         {
             string[] strs = info.Split(';');
@@ -75,8 +74,6 @@ namespace Laba
         public override void DrawLoc(Graphics g)
         {
             Pen pen = new Pen(Color.Black);
-
-           
             
             Brush b = new SolidBrush(MainColor);
             List<Point> p = new List<Point>(11);
@@ -90,10 +87,12 @@ namespace Laba
 
             g.FillPolygon(b, p.ToArray<Point>());
         }
+
         public void SetDopColor(Color color)
         {
             DopColor = color;
         }
+
         public override string ToString()
         {
             return MaxSpeed + ";" + Weight + ";" + MainColor.Name;
@@ -119,6 +118,7 @@ namespace Laba
             }
             return 0;
         }
+
         /// <summary>
         /// Метод интерфейса IEquatable для класса Car
         /// </summary>
@@ -131,8 +131,7 @@ namespace Laba
                 return false;
             }
             if (GetType().Name != other.GetType().Name)
-                
-        {
+            {
                 return false;
             }
             if (MaxSpeed != other.MaxSpeed)

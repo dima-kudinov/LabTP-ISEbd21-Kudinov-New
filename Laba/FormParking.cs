@@ -20,7 +20,6 @@ namespace Laba
         private const int countLevel = 5;
         private Logger logger; 
         public FormParking()
-
         {
             InitializeComponent();
             logger = LogManager.GetCurrentClassLogger();
@@ -31,8 +30,8 @@ namespace Laba
             {
                 listBoxLevels.Items.Add("Уровень " + (i + 1));
             }
-            
         }      
+
         /// Метод отрисовки парковки
         private void Draw()
         {
@@ -45,6 +44,7 @@ namespace Laba
                 pictureBoxParking.Image = bmp;
             }
         }
+
         private void buttonTakeLoc_Click(object sender, EventArgs e)
         {
             if (listBoxLevels.SelectedIndex > -1)
@@ -80,7 +80,8 @@ namespace Laba
                     }
                 }
             }
-        }
+        }
+
         /// <summary>
         /// Метод обработки выбора элемента на listBoxLevels
         /// </summary>
@@ -125,7 +126,8 @@ namespace Laba
                 catch (ParkingAlreadyHaveException ex)
                 {
                     MessageBox.Show(ex.Message, "Дублирование", MessageBoxButtons.OK,MessageBoxIcon.Error);
-                }
+                }
+
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message, "Неизвестная ошибка",
@@ -133,8 +135,8 @@ namespace Laba
                     logger.Error("Неизвестная ошибка");
                 }
             }
-        }
-
+        }
+        
         private void сохранитьToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (saveFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
@@ -155,7 +157,6 @@ namespace Laba
             }
         }
             
- 
         /// <summary>
         /// Обработка нажатия пункта меню "Загрузить"
         /// </summary>
@@ -187,6 +188,7 @@ namespace Laba
                 Draw();
             }
         }
+
         private void buttonSort_Click(object sender, EventArgs e)
         {
             parking.Sort();
@@ -194,4 +196,4 @@ namespace Laba
             logger.Info("Сортировка уровней");
         }
     }
-}
+}

@@ -20,6 +20,7 @@ namespace Laba
         private const int _placeSizeWidth = 210;
         private const int _placeSizeHeight = 80;
         private int _currentIndex;
+
         /// <summary>
         /// Получить порядковое место на парковке
         /// </summary>
@@ -30,6 +31,7 @@ namespace Laba
                 return _places.Keys.ToList()[_currentIndex];
             }
         }
+
         public Parking(int sizes, int pictureWidth, int pictureHeight)
         {
             _maxCount = sizes;
@@ -77,6 +79,7 @@ namespace Laba
         {
             return !_places.ContainsKey(index);
         }
+
         public void Draw(Graphics g)
         {
             DrawMarking(g);
@@ -86,6 +89,7 @@ namespace Laba
                 _places[keys[i]].DrawLoc(g);
             }
         }
+
         private void DrawMarking(Graphics g)
         {
             Pen pen = new Pen(Color.Black, 3);
@@ -101,7 +105,6 @@ namespace Laba
                 g.DrawLine(pen, i * _placeSizeWidth, 0, i * _placeSizeWidth, 400);
             }
         }
-
 
         public T this[int ind]
         {
@@ -128,6 +131,7 @@ namespace Laba
 
             }
         }
+
         public T Current
         {
             get
@@ -135,6 +139,7 @@ namespace Laba
                 return _places[_places.Keys.ToList()[_currentIndex]];
             }
         }
+
         /// <summary>
         /// Метод интерфейса IEnumerator для получения текущего элемента
         /// </summary>
@@ -166,6 +171,7 @@ namespace Laba
         {
             _currentIndex = -1;
         }
+
         /// <summary>
         /// Метод интерфейса IEnumerable
         /// </summary>
@@ -174,6 +180,7 @@ namespace Laba
         {
             return this;
         }
+
         /// <summary>
         /// Метод интерфейса IEnumerable
         /// </summary>
@@ -182,6 +189,7 @@ namespace Laba
         {
             return GetEnumerator();
         }
+
         /// <summary>
         /// Метод интерфейса IComparable
         /// </summary>
@@ -226,7 +234,3 @@ namespace Laba
         }
     }
 }
-
-
-
-

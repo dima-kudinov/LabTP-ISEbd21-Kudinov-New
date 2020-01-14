@@ -18,6 +18,7 @@ namespace Laba
         public float Weight { protected set; get; }
 
         public Color MainColor { protected set; get; }
+
         public void SetPosition(int x, int y, int width, int height)
         {
             Posx = x;
@@ -25,10 +26,12 @@ namespace Laba
             pctrWidth = width;
             pctrHeight = height;
         }
+
         public void SetMainColor(Color color)
         {
             MainColor = color;
         }
+
         public abstract void MoveTransport(Direction direction);
         public abstract void DrawLoc(Graphics g);
     }
