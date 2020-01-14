@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Laba
 {
-    interface IVagon
+    public interface IVagon
     {
         void DrawVagon(Graphics g);
     }

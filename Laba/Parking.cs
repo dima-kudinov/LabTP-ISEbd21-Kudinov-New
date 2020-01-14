@@ -7,12 +7,14 @@ using System.Threading.Tasks;
 
 namespace Laba
 {
-    public class Parking<T> where T : class, ITransport
+    public class Parking<T, U> where T : class, ITransport
+        where U : class, IVagon
     {
         /// <summary>
         /// Массив объектов, которые храним
         /// </summary>
         private T[] _places;
+        private U vagon;
         /// <summary>
         /// Ширина окна отрисовки
         /// </summary>
@@ -23,9 +25,9 @@ namespace Laba
         private int PictureHeight { get; set; }
         /// <summary>
         /// Размер парковочного места (ширина)
-         private const int _placeSizeWidth = 210;
+        private const int _placeSizeWidth = 210;
         /// <summary>
-        
+
         /// Размер парковочного места (высота)
         /// </summary>
         private const int _placeSizeHeight = 80;
@@ -52,7 +54,7 @@ namespace Laba
         /// <param name="p">Парковка</param>
         /// <param name="car">Добавляемый автомобиль</param>
         /// <returns></returns>
-        public static int operator +(Parking<T> p, T car)
+        public static int operator +(Parking<T, U> p, T car)
         {
             for (int i = 0; i < p._places.Length; i++)
             {
@@ -73,8 +75,8 @@ namespace Laba
         /// </summary>
         /// <param name="p">Парковка</param>
         /// <param name="index">Индекс места, с которого пытаемся извлечь объект</param>
- /// <returns></returns>
- public static T operator -(Parking<T> p, int index)
+        /// <returns></returns>
+        public static T operator -(Parking<T, U> p, int index)
         {
             if (index < 0 || index > p._places.Length)
             {
@@ -88,12 +90,44 @@ namespace Laba
             }
             return null;
         }
+
+        public U getVagon()
+        {
+            return vagon;
+        }
+
+        public static bool operator <= (Parking<T, U> p, int compareWith)
+        {
+            int freePlaces = 0;
+            for (int i = 0; i < p._places.Length; i++)
+            {
+                if (p.CheckFreePlace(i))
+                {
+                    freePlaces++;
+                }
+            }
+            return freePlaces <= compareWith;
+        }
+
+        public static bool operator >= (Parking<T, U> p, int compareWith)
+        {
+            int freePlaces = 0;
+            for (int i = 0; i < p._places.Length; i++)
+            {
+                if (p.CheckFreePlace(i))
+                {
+                    freePlaces++;
+                }
+            }
+            return freePlaces >= compareWith;
+        }
+
         /// <summary>
         /// Метод проверки заполнености парковочного места (ячейки массива)
         /// </summary>
         /// <param name="index">Номер парковочного места (порядковый номер в      массиве)</param>
- /// <returns></returns>
- private bool CheckFreePlace(int index)
+        /// <returns></returns>
+        private bool CheckFreePlace(int index)
         {
             return _places[index] == null;
         }

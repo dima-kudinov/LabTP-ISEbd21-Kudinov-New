@@ -9,19 +9,20 @@ namespace Laba
 {
     public class locomotive : Train
     {
-
         protected const int locWidth = 150;
         protected const int locHeight = 80;
         
         public Color DopColor { protected set; get; }
-
-        public locomotive(int maxSpeed, float weight, Color mainColor, Color dopColor)
+        public VagonCount Count { protected set; get; }
+        protected int vagonType;
+        public locomotive(int maxSpeed, float weight, Color mainColor, Color dopColor, VagonCount count)
         {
             MaxSpeed = maxSpeed;
             Weight = weight;
             MainColor = mainColor;
             DopColor = dopColor;
-         
+            Count = count;
+            vagonType = new Random().Next(3);
         }
 
         public override void MoveTransport(Direction direction)
@@ -61,13 +62,9 @@ namespace Laba
                     break;
             }
         }
-
         public override void DrawLoc(Graphics g)
         {
             Pen pen = new Pen(Color.Black);
-
-           
-            
             Brush b = new SolidBrush(MainColor);
             List<Point> p = new List<Point>(11);
             p.Add(new Point(Posx + 10, Posy + 15));
@@ -79,6 +76,27 @@ namespace Laba
             p.Add(new Point(Posx + 75, Posy + 15));
 
             g.FillPolygon(b, p.ToArray<Point>());
+
+            IVagon vagon;
+
+            switch (vagonType)
+            {
+                
+                 
+                case 1:
+                    vagon = new Vagon2(Count,
+               MainColor, DopColor, Posx, Posy);
+                    break;
+                case 2:
+                    vagon = new Vagon3(Count,
+               MainColor, DopColor, Posx, Posy);
+                    break;
+                default:
+                    vagon = new Vagon(Count,
+               MainColor, DopColor, Posx, Posy);
+                    break;
+            }
+            vagon.DrawVagon(g);
         }
     }
 }

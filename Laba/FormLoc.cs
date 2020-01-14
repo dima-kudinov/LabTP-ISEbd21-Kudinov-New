@@ -10,10 +10,6 @@ using System.Windows.Forms;
 
 namespace Laba
 {
-
-
-
-
     public partial class FormLoc : Form
     {
         private ITransport loc;
@@ -36,7 +32,7 @@ namespace Laba
         {
             Random rnd = new Random();
             loc = new locomotive(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.Green,
-           Color.Red);
+           Color.Red,0);
 
             loc.SetPosition(rnd.Next(500, 600), rnd.Next(10, 100), pictureBoxLoc.Width,
            pictureBoxLoc.Height);
@@ -48,7 +44,7 @@ namespace Laba
         {
             Random rnd = new Random();
             loc = new Teplovoz(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.Green,
-           Color.Red, true, true);
+           Color.Red, true, true,0);
 
             loc.SetPosition(rnd.Next(500, 600), rnd.Next(10, 100), pictureBoxLoc.Width,
            pictureBoxLoc.Height);

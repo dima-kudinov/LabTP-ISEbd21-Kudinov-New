@@ -43,7 +43,7 @@ namespace Laba
             ColorDialog dialog = new ColorDialog();
             if (dialog.ShowDialog() == DialogResult.OK)
             {
-                var car = new locomotive(100, 1000, dialog.Color, Color.Red);
+                var car = new locomotive(100, 1000, dialog.Color, Color.Red,0);
                 int place = parking + car;
                 Draw();
             }
@@ -62,7 +62,7 @@ namespace Laba
                 if (dialogDop.ShowDialog() == DialogResult.OK)
                 {
                     var car = new Teplovoz(100, 1000, dialog.Color, dialogDop.Color,
-                   true, true);
+                   true, true,0);
                     int place = parking + car;
                     Draw();
                 }
