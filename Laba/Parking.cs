@@ -10,11 +10,11 @@ namespace Laba
     public class Parking<T> where T : class, ITransport
     {
         private Dictionary<int, T> _places;
-         private int _maxCount;
+        private int _maxCount;
 
         private int PictureWidth { get; set; }
         private int PictureHeight { get; set; }
-         private const int _placeSizeWidth = 210;
+        private const int _placeSizeWidth = 210;
         private const int _placeSizeHeight = 80;
 
         public Parking(int sizes, int pictureWidth, int pictureHeight)
@@ -29,7 +29,7 @@ namespace Laba
         {
             if (p._places.Count == p._maxCount)
             {
-                throw new ParkingOverflowException();
+                return -1;
             }
             for (int i = 0; i < p._maxCount; i++)
             {
@@ -45,21 +45,26 @@ namespace Laba
             return -1;
         }
 
-    public static T operator -(Parking<T> p, int index)
+        public static T operator -(Parking<T> p, int index)
         {
+            if (index < 0 || index > p._maxCount)
+            {
+                return null;
+            }
             if (!p.CheckFreePlace(index))
             {
                 T locomotive = p._places[index];
                 p._places.Remove(index);
                 return locomotive;
             }
-            throw new ParkingNotFoundException(index);
+            return null;
         }
 
-     private bool CheckFreePlace(int index)
+        private bool CheckFreePlace(int index)
         {
             return !_places.ContainsKey(index);
         }
+
         public void Draw(Graphics g)
         {
             DrawMarking(g);
@@ -69,6 +74,7 @@ namespace Laba
                 _places[keys[i]].DrawLoc(g);
             }
         }
+
         private void DrawMarking(Graphics g)
         {
             Pen pen = new Pen(Color.Black, 3);
@@ -84,6 +90,7 @@ namespace Laba
                 g.DrawLine(pen, i * _placeSizeWidth, 0, i * _placeSizeWidth, 400);
             }
         }
+
         public T this[int ind]
         {
             get
@@ -92,7 +99,7 @@ namespace Laba
                 {
                     return _places[ind];
                 }
-                throw new ParkingNotFoundException(ind);
+                return null;
             }
             set
             {
@@ -102,16 +109,7 @@ namespace Laba
                     _places[ind].SetPosition(5 + ind / 5 * _placeSizeWidth + 5, ind % 5
                     * _placeSizeHeight + 15, PictureWidth, PictureHeight);
                 }
-                else
-                {
-                    throw new ParkingOccupiedPlaceException(ind);
-                }
-
             }
         }
     }
-    
 }
-
-
-

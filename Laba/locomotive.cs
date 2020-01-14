@@ -9,7 +9,6 @@ namespace Laba
 {
     public class locomotive : Train
     {
-
         protected const int locWidth = 150;
         protected const int locHeight = 80;
         
@@ -22,6 +21,7 @@ namespace Laba
             MainColor = mainColor;
             DopColor = dopColor;
         }
+
         public locomotive(string info)
         {
             string[] strs = info.Split(';');
@@ -75,8 +75,6 @@ namespace Laba
         {
             Pen pen = new Pen(Color.Black);
 
-           
-            
             Brush b = new SolidBrush(MainColor);
             List<Point> p = new List<Point>(11);
             p.Add(new Point(Posx + 10, Posy + 15));
@@ -89,14 +87,15 @@ namespace Laba
 
             g.FillPolygon(b, p.ToArray<Point>());
         }
+
         public void SetDopColor(Color color)
         {
             DopColor = color;
         }
+
         public override string ToString()
         {
             return MaxSpeed + ";" + Weight + ";" + MainColor.Name;
         }
-
     }
 }

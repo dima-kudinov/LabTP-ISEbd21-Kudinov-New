@@ -11,11 +11,11 @@ namespace Laba
     {
         /// Список с уровнями парковки
         List<Parking<ITransport>> parkingStages;
-  /// Сколько мест на каждом уровне
+        /// Сколько мест на каждом уровне
 
         private const int countPlaces = 20;
         private int pictureWidth;
-        
+
         private int pictureHeight;
 
         /// Конструктор
@@ -74,7 +74,6 @@ namespace Laba
                         }
                     }
                 }
-                
             }
             return true;
         }
@@ -83,7 +82,7 @@ namespace Laba
         {
             if (!File.Exists(filename))
             {
-                throw new FileNotFoundException();
+                return false;
             }
             using (StreamReader sr = new StreamReader(filename))
             {

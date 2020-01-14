@@ -104,7 +104,7 @@
             // 
             // panelGold
             // 
-            this.panelGold.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.panelGold.BackColor = System.Drawing.Color.Orange;
             this.panelGold.Location = new System.Drawing.Point(134, 294);
             this.panelGold.Name = "panelGold";
             this.panelGold.Size = new System.Drawing.Size(68, 62);
@@ -122,7 +122,7 @@
             // 
             // panelBlue
             // 
-            this.panelBlue.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.panelBlue.BackColor = System.Drawing.Color.RoyalBlue;
             this.panelBlue.Location = new System.Drawing.Point(134, 123);
             this.panelBlue.Name = "panelBlue";
             this.panelBlue.Size = new System.Drawing.Size(68, 62);

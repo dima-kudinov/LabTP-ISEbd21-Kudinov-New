@@ -1,5 +1,4 @@
-﻿using NLog;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,14 +15,11 @@ namespace Laba
         /// Объект от класса многоуровневой парковки
         MultiLevelParking parking;
         /// Количество уровней-парковок      
-         FormLocConfig form;
+        FormLocConfig form;
         private const int countLevel = 5;
-        private Logger logger; 
         public FormParking()
-
         {
             InitializeComponent();
-            logger = LogManager.GetCurrentClassLogger();
             parking = new MultiLevelParking(countLevel, pictureBoxParking.Width,
            pictureBoxParking.Height);
             //заполнение listBox
@@ -31,15 +27,14 @@ namespace Laba
             {
                 listBoxLevels.Items.Add("Уровень " + (i + 1));
             }
-            
-        }      
+        }
         /// Метод отрисовки парковки
         private void Draw()
         {
             if (listBoxLevels.SelectedIndex > -1)
             {
-     Bitmap bmp = new Bitmap(pictureBoxParking.Width,
-    pictureBoxParking.Height);
+                Bitmap bmp = new Bitmap(pictureBoxParking.Width,
+               pictureBoxParking.Height);
                 Graphics gr = Graphics.FromImage(bmp);
                 parking[listBoxLevels.SelectedIndex].Draw(gr);
                 pictureBoxParking.Image = bmp;
@@ -51,10 +46,9 @@ namespace Laba
             {
                 if (maskedTextBoxPlace.Text != "")
                 {
-                    try
-                    { 
-                    var locomotive = parking[listBoxLevels.SelectedIndex] -Convert.ToInt32(maskedTextBoxPlace.Text);
-                  
+                    var locomotive = parking[listBoxLevels.SelectedIndex] - Convert.ToInt32(maskedTextBoxPlace.Text);
+                    if (locomotive != null)
+                    {
                         Bitmap bmp = new Bitmap(pictureBoxTakeLoc.Width,
                        pictureBoxTakeLoc.Height);
                         Graphics gr = Graphics.FromImage(bmp);
@@ -62,22 +56,14 @@ namespace Laba
                        pictureBoxTakeLoc.Height);
                         locomotive.DrawLoc(gr);
                         pictureBoxTakeLoc.Image = bmp;
-                        logger.Info("Изъят автомобиль " + locomotive.ToString() + " с места "+ maskedTextBoxPlace.Text);
-                        Draw();
                     }
-                    catch (ParkingNotFoundException ex)
+                    else
                     {
-                        MessageBox.Show(ex.Message, "Не найдено", MessageBoxButtons.OK,MessageBoxIcon.Error);
-                        Bitmap bmp = new Bitmap(pictureBoxTakeLoc.Width, pictureBoxTakeLoc.Height);
+                        Bitmap bmp = new Bitmap(pictureBoxTakeLoc.Width,
+                      pictureBoxTakeLoc.Height);
                         pictureBoxTakeLoc.Image = bmp;
-                        logger.Error("Не найдено");
                     }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message, "Неизвестная ошибка",
-                       MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        logger.Error("Неизвестная ошибка");
-                    }
+                    Draw();
                 }
             }
         }
@@ -110,24 +96,14 @@ namespace Laba
         {
             if (locomotive != null && listBoxLevels.SelectedIndex > -1)
             {
-                try
+                int place = parking[listBoxLevels.SelectedIndex] + locomotive;
+                if (place > -1)
                 {
-                    int place = parking[listBoxLevels.SelectedIndex] + locomotive;
-                    logger.Info("Добавлен локомотив " + locomotive.ToString() + " на место "
-                   + place);
                     Draw();
                 }
-                catch (ParkingOverflowException ex)
+                else
                 {
-                    MessageBox.Show(ex.Message, "Переполнение", MessageBoxButtons.OK,
-                   MessageBoxIcon.Error);
-                    logger.Error("Переполнение");
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "Неизвестная ошибка",
-                   MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    logger.Error("Неизвестная ошибка");
+                    MessageBox.Show("Локомотив не удалось поставить");
                 }
             }
         }
@@ -137,23 +113,20 @@ namespace Laba
         {
             if (saveFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                try
+                if (parking.SaveData(saveFileDialog.FileName))
                 {
-                    parking.SaveData(saveFileDialog.FileName);
                     MessageBox.Show("Сохранение прошло успешно", "Результат",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    logger.Info("Сохранено в файл " + saveFileDialog.FileName);
                 }
-                catch (Exception ex)
+                else
                 {
-                    MessageBox.Show(ex.Message, "Неизвестная ошибка при сохранении",
+                    MessageBox.Show("Неизвестная ошибка при сохранении", "Результат",
                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    logger.Error("Неизвестная ошибка при сохранении");
                 }
             }
         }
-            
- 
+
+
         /// <summary>
         /// Обработка нажатия пункта меню "Загрузить"
         /// </summary>
@@ -163,29 +136,18 @@ namespace Laba
         {
             if (openFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                try
+                if (parking.LoadData(openFileDialog.FileName))
                 {
-                    parking.LoadData(openFileDialog.FileName);
                     MessageBox.Show("Загрузили", "Результат", MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
-                    logger.Info("Загружено из файла " + openFileDialog.FileName);
                 }
-                catch (ParkingOccupiedPlaceException ex)
+                else
                 {
-                    MessageBox.Show(ex.Message, "Занятое место", MessageBoxButtons.OK,
+                    MessageBox.Show("Не загрузили", "Результат", MessageBoxButtons.OK,
                    MessageBoxIcon.Error);
-                    logger.Error("Занятое место");
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "Неизвестная ошибка при сохранении",
-                   MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    logger.Error("Неизвестная ошибка при сохранении");
                 }
                 Draw();
             }
         }
-
-        
     }
 }
