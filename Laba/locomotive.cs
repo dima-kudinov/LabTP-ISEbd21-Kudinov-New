@@ -21,7 +21,6 @@ namespace Laba
             MainColor = mainColor;
             DopColor = dopColor;
         }
-
         public locomotive(string info)
         {
             string[] strs = info.Split(';');
@@ -87,12 +86,12 @@ namespace Laba
 
             g.FillPolygon(b, p.ToArray<Point>());
         }
-
+        
         public void SetDopColor(Color color)
         {
             DopColor = color;
         }
-
+        
         public override string ToString()
         {
             return MaxSpeed + ";" + Weight + ";" + MainColor.Name;
