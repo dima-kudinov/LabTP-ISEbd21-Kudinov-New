@@ -35,5 +35,17 @@ namespace Laba
                 return null;
             }
         }
-    }
+
+        public ITransport this[int ind, int key]
+        {
+            get
+            {
+                if (ind > -1 && ind < parkingStages.Count)
+                {
+                    return parkingStages[ind].GetTrainByKey(key);
+                }
+                return null;
+            }
+        }
+    }    
 }

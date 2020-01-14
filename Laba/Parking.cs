@@ -10,7 +10,8 @@ namespace Laba
     public class Parking<T> where T : class, ITransport
     {
         private Dictionary<int, T> _places;
-         private int _maxCount;
+        private HashSet<T> _removedTrains;
+        private int _maxCount;
 
         private int PictureWidth { get; set; }
         private int PictureHeight { get; set; }
@@ -21,11 +22,12 @@ namespace Laba
         {
             _maxCount = sizes;
             _places = new Dictionary<int, T>();
+            _removedTrains = new HashSet<T>();
             PictureWidth = pictureWidth;
             PictureHeight = pictureHeight;
         }
 
-        public static int operator +(Parking<T> p, T car)
+        public static int operator +(Parking<T> p, T locomotive)
         {
             if (p._places.Count == p._maxCount)
             {
@@ -35,7 +37,7 @@ namespace Laba
             {
                 if (p.CheckFreePlace(i))
                 {
-                    p._places.Add(i, car);
+                    p._places.Add(i, locomotive);
                     p._places[i].SetPosition(5 + i / 5 * _placeSizeWidth + 5,
                      i % 5 * _placeSizeHeight + 15, p.PictureWidth,
                     p.PictureHeight);
@@ -49,9 +51,10 @@ namespace Laba
         {
             if (!p.CheckFreePlace(index))
             {
-                T car = p._places[index];
+                T locomotive = p._places[index];
                 p._places.Remove(index);
-                return car;
+                p._removedTrains.Add(locomotive);
+                return locomotive;
             }
             return null;
         }
@@ -84,5 +87,11 @@ namespace Laba
                 g.DrawLine(pen, i * _placeSizeWidth, 0, i * _placeSizeWidth, 400);
             }
         }
+
+        public T GetTrainByKey(int key)
+        {
+            return _places.ContainsKey(key) ? _places[key] : null;
+        }
     }
 }
+
