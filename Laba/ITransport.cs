@@ -13,7 +13,5 @@ namespace Laba
         void MoveTransport(Direction direction);
         void DrawLoc(Graphics g);
         void SetMainColor(Color color);
-
-
     }
 }

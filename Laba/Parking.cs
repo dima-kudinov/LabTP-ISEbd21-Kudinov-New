@@ -10,11 +10,11 @@ namespace Laba
     public class Parking<T> where T : class, ITransport
     {
         private Dictionary<int, T> _places;
-         private int _maxCount;
+        private int _maxCount;
 
         private int PictureWidth { get; set; }
         private int PictureHeight { get; set; }
-         private const int _placeSizeWidth = 210;
+        private const int _placeSizeWidth = 210;
         private const int _placeSizeHeight = 80;
 
         public Parking(int sizes, int pictureWidth, int pictureHeight)
@@ -25,7 +25,7 @@ namespace Laba
             PictureHeight = pictureHeight;
         }
 
-        public static int operator +(Parking<T> p, T car)
+        public static int operator +(Parking<T> p, T locomotive)
         {
             if (p._places.Count == p._maxCount)
             {
@@ -35,7 +35,7 @@ namespace Laba
             {
                 if (p.CheckFreePlace(i))
                 {
-                    p._places.Add(i, car);
+                    p._places.Add(i, locomotive);
                     p._places[i].SetPosition(5 + i / 5 * _placeSizeWidth + 5,
                      i % 5 * _placeSizeHeight + 15, p.PictureWidth,
                     p.PictureHeight);
@@ -45,7 +45,7 @@ namespace Laba
             return -1;
         }
 
-    public static T operator -(Parking<T> p, int index)
+        public static T operator -(Parking<T> p, int index)
         {
             if (!p.CheckFreePlace(index))
             {
@@ -56,10 +56,11 @@ namespace Laba
             throw new ParkingNotFoundException(index);
         }
 
-     private bool CheckFreePlace(int index)
+        private bool CheckFreePlace(int index)
         {
             return !_places.ContainsKey(index);
         }
+
         public void Draw(Graphics g)
         {
             DrawMarking(g);
@@ -69,6 +70,7 @@ namespace Laba
                 _places[keys[i]].DrawLoc(g);
             }
         }
+
         private void DrawMarking(Graphics g)
         {
             Pen pen = new Pen(Color.Black, 3);
@@ -84,6 +86,7 @@ namespace Laba
                 g.DrawLine(pen, i * _placeSizeWidth, 0, i * _placeSizeWidth, 400);
             }
         }
+
         public T this[int ind]
         {
             get
@@ -105,11 +108,10 @@ namespace Laba
                 else
                 {
                     throw new ParkingOccupiedPlaceException(ind);
-                }
+                }            
             }
         }
     }
-    
 }
 
 
