@@ -12,10 +12,8 @@ namespace Laba
         public bool Tube { protected set; get; }
         public bool Line { protected set; get; }
 
-
-
         public Teplovoz(int maxSpeed, float weight, Color mainColor,
-            Color dopColor, bool tube, bool line) 
+            Color dopColor, bool tube, bool line)
             : base(maxSpeed, weight, mainColor, dopColor)
         {
             MaxSpeed = maxSpeed;
@@ -52,7 +50,5 @@ namespace Laba
                 g.FillPolygon(m, tp.ToArray<Point>());
             }
         }
-
-        
     }
 }

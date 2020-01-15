@@ -15,7 +15,7 @@ namespace Laba
         /// Объект от класса многоуровневой парковки
         MultiLevelParking parking;
         /// Количество уровней-парковок      
-         FormLocConfig form;
+        FormLocConfig form;
         private const int countLevel = 5;
         public FormParking()
 
@@ -28,15 +28,15 @@ namespace Laba
             {
                 listBoxLevels.Items.Add("Уровень " + (i + 1));
             }
-            
-        }      
+
+        }
         /// Метод отрисовки парковки
         private void Draw()
         {
             if (listBoxLevels.SelectedIndex > -1)
             {
-     Bitmap bmp = new Bitmap(pictureBoxParking.Width,
-    pictureBoxParking.Height);
+                Bitmap bmp = new Bitmap(pictureBoxParking.Width,
+               pictureBoxParking.Height);
                 Graphics gr = Graphics.FromImage(bmp);
                 parking[listBoxLevels.SelectedIndex].Draw(gr);
                 pictureBoxParking.Image = bmp;
@@ -62,39 +62,27 @@ namespace Laba
                     }
                     else
                     {
-                        
-                     Bitmap bmp = new Bitmap(pictureBoxTakeLoc.Width,
-                        pictureBoxTakeLoc.Height);
+                        Bitmap bmp = new Bitmap(pictureBoxTakeLoc.Width,
+                           pictureBoxTakeLoc.Height);
                         pictureBoxTakeLoc.Image = bmp;
                     }
                     Draw();
                 }
             }
         }
-        /// <summary>
-        /// Метод обработки выбора элемента на listBoxLevels
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+
         private void listBoxLevels_SelectedIndexChanged(object sender, EventArgs e)
         {
             Draw();
         }
-        /// <summary>
-        /// Обработка нажатия кнопки "Добавить автомобиль"
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+
         private void buttonSetLoc_Click(object sender, EventArgs e)
         {
             form = new FormLocConfig();
             form.AddEvent(AddLoc);
             form.Show();
         }
-        /// <summary>
-        /// Метод добавления машины
-        /// </summary>
-        /// <param name="car"></param>
+
         private void AddLoc(ITransport locomotive)
         {
             if (locomotive != null && listBoxLevels.SelectedIndex > -1)
