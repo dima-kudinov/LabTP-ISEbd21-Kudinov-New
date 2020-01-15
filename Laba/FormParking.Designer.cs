@@ -31,6 +31,7 @@
             this.labelPlace = new System.Windows.Forms.Label();
             this.labelName = new System.Windows.Forms.Label();
             this.listBoxLevels = new System.Windows.Forms.ListBox();
+
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxParking)).BeginInit();
             this.groupBoxTake.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTakeLoc)).BeginInit();

@@ -10,6 +10,10 @@ using System.Windows.Forms;
 
 namespace Laba
 {
+
+
+
+
     public partial class FormLoc : Form
     {
         private ITransport loc;
@@ -31,7 +35,6 @@ namespace Laba
         private void buttonCreateLoc_Click(object sender, EventArgs e)
         {
             Random rnd = new Random();
-
             loc = new locomotive(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.Green,
            Color.Red);
 
@@ -44,7 +47,6 @@ namespace Laba
         private void buttonCreateTepl_Click(object sender, EventArgs e)
         {
             Random rnd = new Random();
-
             loc = new Teplovoz(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.Green,
            Color.Red, true, true);
 
@@ -75,5 +77,10 @@ namespace Laba
             }
             Draw();
         }
-    }  
+
+   
+    }
+
+
+    
 }
