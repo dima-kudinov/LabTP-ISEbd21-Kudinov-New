@@ -7,10 +7,12 @@ using System.Threading.Tasks;
 
 namespace Laba
 {
-    public class Parking<T> where T : class, ITransport
+    public class Parking<T, U> where T : class, ITransport
+         where U : class, IVagon
     {
         private Dictionary<int, T> _places;
         private HashSet<T> _removedTrains;
+        private U vagon;
         private int _maxCount;
 
         private int PictureWidth { get; set; }
@@ -27,7 +29,7 @@ namespace Laba
             PictureHeight = pictureHeight;
         }
 
-        public static int operator +(Parking<T> p, T locomotive)
+        public static int operator +(Parking<T,U> p, T locomotive)
         {
             if (p._places.Count == p._maxCount)
             {
@@ -47,7 +49,7 @@ namespace Laba
             return -1;
         }
 
-    public static T operator -(Parking<T> p, int index)
+    public static T operator -(Parking<T,U> p, int index)
         {
             if (!p.CheckFreePlace(index))
             {
@@ -58,8 +60,38 @@ namespace Laba
             }
             return null;
         }
+        public U getVagon()
+        {
+            return vagon;
+        }
 
-     private bool CheckFreePlace(int index)
+        public static bool operator <=(Parking<T, U> p, int compareWith)
+        {
+            int freePlaces = 0;
+            for (int i = 0; i < p._places.Length; i++)
+            {
+                if (p.CheckFreePlace(i))
+                {
+                    freePlaces++;
+                }
+            }
+            return freePlaces <= compareWith;
+        }
+
+        public static bool operator >=(Parking<T, U> p, int compareWith)
+        {
+            int freePlaces = 0;
+            for (int i = 0; i < p._places.Length; i++)
+            {
+                if (p.CheckFreePlace(i))
+                {
+                    freePlaces++;
+                }
+            }
+            return freePlaces >= compareWith;
+        }
+
+        private bool CheckFreePlace(int index)
         {
             return !_places.ContainsKey(index);
         }
