@@ -62,6 +62,7 @@ namespace Laba
                     break;
             }
         }
+
         public override void DrawLoc(Graphics g)
         {
             Pen pen = new Pen(Color.Black);
