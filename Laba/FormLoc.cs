@@ -10,10 +10,6 @@ using System.Windows.Forms;
 
 namespace Laba
 {
-
-
-
-
     public partial class FormLoc : Form
     {
         private ITransport loc;
@@ -27,11 +23,11 @@ namespace Laba
         {
             Bitmap bmp = new Bitmap(pictureBoxLoc.Width, pictureBoxLoc.Height);
             Graphics gr = Graphics.FromImage(bmp);
-            
+
             loc.DrawLoc(gr);
             pictureBoxLoc.Image = bmp;
         }
-        
+
         private void buttonCreateLoc_Click(object sender, EventArgs e)
         {
             Random rnd = new Random();
@@ -41,7 +37,7 @@ namespace Laba
 
             loc.SetPosition(rnd.Next(500, 600), rnd.Next(10, 100), pictureBoxLoc.Width,
            pictureBoxLoc.Height);
-            
+
             Draw();
         }
 
@@ -79,10 +75,5 @@ namespace Laba
             }
             Draw();
         }
-
-   
     }
-
-
-    
 }

@@ -17,7 +17,7 @@ namespace Laba
 
         private int PictureWidth { get; set; }
         private int PictureHeight { get; set; }
-         private const int _placeSizeWidth = 210;
+        private const int _placeSizeWidth = 210;
         private const int _placeSizeHeight = 80;
 
         public Parking(int sizes, int pictureWidth, int pictureHeight)
@@ -29,7 +29,7 @@ namespace Laba
             PictureHeight = pictureHeight;
         }
 
-        public static int operator +(Parking<T,U> p, T locomotive)
+        public static int operator +(Parking<T, U> p, T locomotive)
         {
             if (p._places.Count == p._maxCount)
             {
@@ -49,7 +49,7 @@ namespace Laba
             return -1;
         }
 
-    public static T operator -(Parking<T,U> p, int index)
+        public static T operator -(Parking<T, U> p, int index)
         {
             if (!p.CheckFreePlace(index))
             {
