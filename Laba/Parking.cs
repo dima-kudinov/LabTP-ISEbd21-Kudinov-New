@@ -84,9 +84,9 @@ namespace Laba
             }
             if (!p.CheckFreePlace(index))
             {
-                T car = p._places[index];
+                T locomotive = p._places[index];
                 p._places[index] = null;
-                return car;
+                return locomotive;
             }
             return null;
         }
