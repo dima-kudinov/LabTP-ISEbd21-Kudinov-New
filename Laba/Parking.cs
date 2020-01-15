@@ -30,13 +30,13 @@ namespace Laba
             }
         }
 
-        public static int operator +(Parking<T> p, T car)
+        public static int operator +(Parking<T> p, T locomotive)
         {
             for (int i = 0; i < p._places.Length; i++)
             {
                 if (p.CheckFreePlace(i))
                 {
-                    p._places[i] = car;
+                    p._places[i] = locomotive;
                     p._places[i].SetPosition(5 + i / 5 * _placeSizeWidth + 5,
                      i % 5 * _placeSizeHeight + 15, p.PictureWidth,
                     p.PictureHeight);
