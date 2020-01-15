@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -74,6 +74,7 @@ namespace Laba
                         }
                     }
                 }
+
             }
             return true;
         }
@@ -82,7 +83,7 @@ namespace Laba
         {
             if (!File.Exists(filename))
             {
-                return false;
+                throw new FileNotFoundException();
             }
             using (StreamReader sr = new StreamReader(filename))
             {
