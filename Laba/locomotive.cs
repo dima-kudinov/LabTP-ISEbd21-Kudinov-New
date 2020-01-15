@@ -11,7 +11,7 @@ namespace Laba
     {
         protected const int locWidth = 150;
         protected const int locHeight = 80;
-        
+
         public Color DopColor { protected set; get; }
 
         public locomotive(int maxSpeed, float weight, Color mainColor, Color dopColor)

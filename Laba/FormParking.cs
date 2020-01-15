@@ -40,6 +40,7 @@ namespace Laba
                 pictureBoxParking.Image = bmp;
             }
         }
+
         private void buttonTakeLoc_Click(object sender, EventArgs e)
         {
             if (listBoxLevels.SelectedIndex > -1)
@@ -68,30 +69,18 @@ namespace Laba
             }
         }
 
-        /// <summary>
-        /// Метод обработки выбора элемента на listBoxLevels
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void listBoxLevels_SelectedIndexChanged(object sender, EventArgs e)
         {
             Draw();
         }
-        /// <summary>
-        /// Обработка нажатия кнопки "Добавить автомобиль"
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+
         private void buttonSetLoc_Click(object sender, EventArgs e)
         {
             form = new FormLocConfig();
             form.AddEvent(AddLoc);
             form.Show();
         }
-        /// <summary>
-        /// Метод добавления машины
-        /// </summary>
-        /// <param name="car"></param>
+
         private void AddLoc(ITransport locomotive)
         {
             if (locomotive != null && listBoxLevels.SelectedIndex > -1)
@@ -107,7 +96,6 @@ namespace Laba
                 }
             }
         }
-
 
         private void сохранитьToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -126,12 +114,6 @@ namespace Laba
             }
         }
 
-
-        /// <summary>
-        /// Обработка нажатия пункта меню "Загрузить"
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void загрузитьToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (openFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
