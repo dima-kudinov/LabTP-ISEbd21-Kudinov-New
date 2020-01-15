@@ -11,7 +11,7 @@ namespace Laba
     {
         protected const int locWidth = 150;
         protected const int locHeight = 80;
-        
+
         public Color DopColor { protected set; get; }
         public VagonCount Count { protected set; get; }
         protected int vagonType;
@@ -62,6 +62,7 @@ namespace Laba
                     break;
             }
         }
+
         public override void DrawLoc(Graphics g)
         {
             Pen pen = new Pen(Color.Black);
@@ -81,8 +82,6 @@ namespace Laba
 
             switch (vagonType)
             {
-                
-                 
                 case 1:
                     vagon = new Vagon2(Count,
                MainColor, DopColor, Posx, Posy);

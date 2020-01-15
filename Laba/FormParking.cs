@@ -12,20 +12,16 @@ namespace Laba
 {
     public partial class FormParking : Form
     {
-        /// <summary>
-        /// Объект от класса-парковки
-        /// </summary>
-        Parking<ITransport> parking;
+
+        Parking<ITransport,IVagon> parking;
         public FormParking()
         {
             InitializeComponent();
-            parking = new Parking<ITransport>(20, pictureBoxParking.Width,
+            parking = new Parking<ITransport,IVagon>(20, pictureBoxParking.Width,
            pictureBoxParking.Height);
             Draw();
         }
-        /// <summary>
-        /// Метод отрисовки парковки
-        /// </summary>
+
         private void Draw()
         {
             Bitmap bmp = new Bitmap(pictureBoxParking.Width, pictureBoxParking.Height);
@@ -33,26 +29,18 @@ namespace Laba
             parking.Draw(gr);
             pictureBoxParking.Image = bmp;
         }
-        /// <summary>
-        /// Обработка нажатия кнопки "Припарковать автомобиль"
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+
         private void buttonSetLoc_Click(object sender, EventArgs e)
         {
             ColorDialog dialog = new ColorDialog();
             if (dialog.ShowDialog() == DialogResult.OK)
             {
-                var car = new locomotive(100, 1000, dialog.Color, Color.Red,0);
-                int place = parking + car;
+                var locomotive = new locomotive(100, 1000, dialog.Color, Color.Red,0);
+                int place = parking + locomotive;
                 Draw();
             }
         }
-        /// <summary>
-        /// Обработка нажатия кнопки "Припарковать гоночный автомобиль"
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+
         private void buttonSetTepl_Click(object sender, EventArgs e)
         {
             ColorDialog dialog = new ColorDialog();
@@ -61,31 +49,27 @@ namespace Laba
                 ColorDialog dialogDop = new ColorDialog();
                 if (dialogDop.ShowDialog() == DialogResult.OK)
                 {
-                    var car = new Teplovoz(100, 1000, dialog.Color, dialogDop.Color,
+                    var locomotive = new Teplovoz(100, 1000, dialog.Color, dialogDop.Color,
                    true, true,0);
-                    int place = parking + car;
+                    int place = parking + locomotive;
                     Draw();
                 }
             }
         }
-        /// <summary>
-        /// Обработка нажатия кнопки "Забрать"
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+
         private void buttonTakeLoc_Click(object sender, EventArgs e)
         {
             if (maskedTextBoxPlace.Text != "")
             {
-                var car = parking - Convert.ToInt32(maskedTextBoxPlace.Text);
-                if (car != null)
+                var locomotive = parking - Convert.ToInt32(maskedTextBoxPlace.Text);
+                if (locomotive != null)
                 {
                     Bitmap bmp = new Bitmap(pictureBoxTakeLoc.Width,
                    pictureBoxTakeLoc.Height);
                     Graphics gr = Graphics.FromImage(bmp);
-                    car.SetPosition(5, 5, pictureBoxTakeLoc.Width,
+                    locomotive.SetPosition(5, 5, pictureBoxTakeLoc.Width,
                    pictureBoxTakeLoc.Height);
-                    car.DrawLoc(gr);
+                    locomotive.DrawLoc(gr);
                     pictureBoxTakeLoc.Image = bmp;
                 }
                 else

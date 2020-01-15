@@ -73,10 +73,5 @@ namespace Laba
             }
             Draw();
         }
-
-   
-    }
-
-
-    
+    }  
 }
