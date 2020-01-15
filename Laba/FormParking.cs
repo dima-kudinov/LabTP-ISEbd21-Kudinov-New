@@ -13,7 +13,7 @@ namespace Laba
     public partial class FormParking : Form
     {
         /// Объект от класса многоуровневой парковки
-        MultiLevelParking parking;        
+        MultiLevelParking parking;
         /// Количество уровней-парковок      
         private const int countLevel = 5;
         public FormParking()
@@ -27,15 +27,15 @@ namespace Laba
             {
                 listBoxLevels.Items.Add("Уровень " + (i + 1));
             }
-            
-        }      
+
+        }
         /// Метод отрисовки парковки
         private void Draw()
         {
             if (listBoxLevels.SelectedIndex > -1)
             {
-     Bitmap bmp = new Bitmap(pictureBoxParking.Width,
-    pictureBoxParking.Height);
+                Bitmap bmp = new Bitmap(pictureBoxParking.Width,
+               pictureBoxParking.Height);
                 Graphics gr = Graphics.FromImage(bmp);
                 parking[listBoxLevels.SelectedIndex].Draw(gr);
                 pictureBoxParking.Image = bmp;

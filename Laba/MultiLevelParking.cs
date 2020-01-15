@@ -10,9 +10,9 @@ namespace Laba
     {
         /// Список с уровнями парковки
         List<Parking<ITransport>> parkingStages;
-  /// Сколько мест на каждом уровне
+        /// Сколько мест на каждом уровне
 
- private const int countPlaces = 20;
+        private const int countPlaces = 20;
         /// Конструктор
         public MultiLevelParking(int countStages, int pictureWidth, int pictureHeight)
         {
