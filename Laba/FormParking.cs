@@ -29,7 +29,7 @@ namespace Laba
             }
 
         }
-        /// Метод отрисовки парковки
+        
         private void Draw()
         {
             if (listBoxLevels.SelectedIndex > -1)
@@ -41,7 +41,7 @@ namespace Laba
                 pictureBoxParking.Image = bmp;
             }
         }
-        /// Обработка нажатия кнопки "Припарковать автомобиль"
+
         private void buttonSetLoc_Click(object sender, EventArgs e)
         {
             if (listBoxLevels.SelectedIndex > -1)
@@ -60,7 +60,7 @@ namespace Laba
                 }
             }
         }
-        /// Обработка нажатия кнопки "Припарковать гоночный автомобиль"
+
         private void buttonSetTepl_Click(object sender, EventArgs e)
         {
             if (listBoxLevels.SelectedIndex > -1)
@@ -85,7 +85,7 @@ namespace Laba
                 }
             }
         }
-        /// Обработка нажатия кнопки "Забрать"
+
         private void buttonTakeLoc_Click(object sender, EventArgs e)
         {
             if (listBoxLevels.SelectedIndex > -1)

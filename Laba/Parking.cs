@@ -15,6 +15,7 @@ namespace Laba
         private int PictureWidth { get; set; }
         private int PictureHeight { get; set; }
         private const int _placeSizeWidth = 210;
+
         private const int _placeSizeHeight = 80;
 
         public Parking(int sizes, int pictureWidth, int pictureHeight)
@@ -36,6 +37,7 @@ namespace Laba
                 if (p.CheckFreePlace(i))
                 {
                     p._places.Add(i, locomotive);
+
                     p._places[i].SetPosition(5 + i / 5 * _placeSizeWidth + 5,
                      i % 5 * _placeSizeHeight + 15, p.PictureWidth,
                     p.PictureHeight);
@@ -60,6 +62,7 @@ namespace Laba
         {
             return !_places.ContainsKey(index);
         }
+        
         public void Draw(Graphics g)
         {
             DrawMarking(g);
@@ -69,6 +72,7 @@ namespace Laba
                 _places[keys[i]].DrawLoc(g);
             }
         }
+
         private void DrawMarking(Graphics g)
         {
             Pen pen = new Pen(Color.Black, 3);

@@ -48,7 +48,7 @@ namespace Laba
                 tp.Add(new Point(Posx + 90, Posy + 40));
 
                 g.FillPolygon(m, tp.ToArray<Point>());
-            }
-        }
+            }       
+        }          
     }
 }
