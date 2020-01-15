@@ -93,7 +93,7 @@ namespace Laba
             }
             return freePlaces >= compareWith;
         }
-
+        
         private bool CheckFreePlace(int index)
         {
             return _places[index] == null;

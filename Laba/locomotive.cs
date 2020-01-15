@@ -66,6 +66,7 @@ namespace Laba
         public override void DrawLoc(Graphics g)
         {
             Pen pen = new Pen(Color.Black);
+            
             Brush b = new SolidBrush(MainColor);
             List<Point> p = new List<Point>(11);
             p.Add(new Point(Posx + 10, Posy + 15));

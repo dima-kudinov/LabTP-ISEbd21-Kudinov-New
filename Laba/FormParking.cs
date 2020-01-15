@@ -12,8 +12,8 @@ namespace Laba
 {
     public partial class FormParking : Form
     {
-
         Parking<ITransport,IVagon> parking;
+
         public FormParking()
         {
             InitializeComponent();
