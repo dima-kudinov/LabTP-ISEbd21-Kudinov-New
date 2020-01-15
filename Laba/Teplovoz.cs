@@ -23,7 +23,6 @@ namespace Laba
             Line = line;
             Tube = tube;
         }
-        
         public Teplovoz(string info) : base(info)
         {
             string[] strs = info.Split(';');
@@ -64,7 +63,7 @@ namespace Laba
                 g.FillPolygon(m, tp.ToArray<Point>());
             }
         }
-        
+
         public override string ToString()
         {
             return base.ToString() + ";" + DopColor.Name + ";" + Line + ";" +

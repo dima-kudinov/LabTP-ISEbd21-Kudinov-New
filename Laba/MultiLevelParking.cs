@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -12,11 +12,12 @@ namespace Laba
         /// Список с уровнями парковки
         List<Parking<ITransport>> parkingStages;
         /// Сколько мест на каждом уровне
+
         private const int countPlaces = 20;
         private int pictureWidth;
 
         private int pictureHeight;
-      
+
         /// Конструктор
         public MultiLevelParking(int countStages, int pictureWidth, int pictureHeight)
         {
@@ -73,6 +74,7 @@ namespace Laba
                         }
                     }
                 }
+
             }
             return true;
         }
@@ -81,7 +83,7 @@ namespace Laba
         {
             if (!File.Exists(filename))
             {
-                return false;
+                throw new FileNotFoundException();
             }
             using (StreamReader sr = new StreamReader(filename))
             {
