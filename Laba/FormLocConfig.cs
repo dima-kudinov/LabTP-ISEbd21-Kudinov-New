@@ -52,8 +52,7 @@ namespace Laba
             {
                 eventAddLoc += ev;
             }
-        }
-
+        }
         private void labelLoc_MouseDown(object sender, MouseEventArgs e)
         {
             labelLoc.DoDragDrop(labelLoc.Text, DragDropEffects.Move |
@@ -110,7 +109,7 @@ namespace Laba
                 e.Effect = DragDropEffects.None;
             }
         }
-
+  
         private void labelBaseColor_DragDrop(object sender, DragEventArgs e)
         {
             if (locomotive != null)

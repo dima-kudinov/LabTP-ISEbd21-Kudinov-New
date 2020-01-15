@@ -2,6 +2,7 @@
 {
     partial class FormLoc
     {
+
         private System.ComponentModel.IContainer components = null;
 
         protected override void Dispose(bool disposing)
@@ -33,6 +34,7 @@
             this.SuspendLayout();
             // 
             // buttonCreateLoc
+            // 
             this.buttonCreateLoc.Location = new System.Drawing.Point(1294, 12);
             this.buttonCreateLoc.Name = "buttonCreateLoc";
             this.buttonCreateLoc.Size = new System.Drawing.Size(224, 23);

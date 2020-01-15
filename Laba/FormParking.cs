@@ -1,3 +1,4 @@
+﻿using NLog;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,9 +18,12 @@ namespace Laba
         /// Количество уровней-парковок      
         FormLocConfig form;
         private const int countLevel = 5;
+        private Logger logger;
         public FormParking()
+
         {
             InitializeComponent();
+            logger = LogManager.GetCurrentClassLogger();
             parking = new MultiLevelParking(countLevel, pictureBoxParking.Width,
            pictureBoxParking.Height);
             //заполнение listBox
@@ -28,7 +32,6 @@ namespace Laba
                 listBoxLevels.Items.Add("Уровень " + (i + 1));
             }
         }
-
         /// Метод отрисовки парковки
         private void Draw()
         {
@@ -48,113 +51,119 @@ namespace Laba
             {
                 if (maskedTextBoxPlace.Text != "")
                 {
+                    try
+                    {
+                        var locomotive = parking[listBoxLevels.SelectedIndex] - Convert.ToInt32(maskedTextBoxPlace.Text);
 
-                    var locomotive = parking[listBoxLevels.SelectedIndex] - Convert.ToInt32(maskedTextBoxPlace.Text);
-
-                    Bitmap bmp = new Bitmap(pictureBoxTakeLoc.Width,
-                   pictureBoxTakeLoc.Height);
-                    Graphics gr = Graphics.FromImage(bmp);
-                    locomotive.SetPosition(5, 5, pictureBoxTakeLoc.Width,
-                   pictureBoxTakeLoc.Height);
-                    locomotive.DrawLoc(gr);
-                    pictureBoxTakeLoc.Image = bmp;
-
+                        Bitmap bmp = new Bitmap(pictureBoxTakeLoc.Width,
+                       pictureBoxTakeLoc.Height);
+                        Graphics gr = Graphics.FromImage(bmp);
+                        locomotive.SetPosition(5, 5, pictureBoxTakeLoc.Width,
+                       pictureBoxTakeLoc.Height);
+                        locomotive.DrawLoc(gr);
+                        pictureBoxTakeLoc.Image = bmp;
+                        logger.Info("Изъят автомобиль " + locomotive.ToString() + " с места " + maskedTextBoxPlace.Text);
+                        Draw();
+                    }
+                    catch (ParkingNotFoundException ex)
+                    {
+                        MessageBox.Show(ex.Message, "Не найдено", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        Bitmap bmp = new Bitmap(pictureBoxTakeLoc.Width, pictureBoxTakeLoc.Height);
+                        pictureBoxTakeLoc.Image = bmp;
+                        logger.Error("Не найдено");
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "Неизвестная ошибка",
+                       MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        logger.Error("Неизвестная ошибка");
+                    }
                 }
-                else
-                {
-                    Bitmap bmp = new Bitmap(pictureBoxTakeLoc.Width, pictureBoxTakeLoc.Height);
-                    pictureBoxTakeLoc.Image = bmp;
-                }
-                Draw();
-
             }
-        }
-    
-
-        /// <summary>
-        /// Метод обработки выбора элемента на listBoxLevels
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        }
         private void listBoxLevels_SelectedIndexChanged(object sender, EventArgs e)
         {
             Draw();
         }
-        /// <summary>
-        /// Обработка нажатия кнопки "Добавить автомобиль"
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+
         private void buttonSetLoc_Click(object sender, EventArgs e)
         {
             form = new FormLocConfig();
             form.AddEvent(AddLoc);
             form.Show();
         }
-        /// <summary>
-        /// Метод добавления машины
-        /// </summary>
-        /// <param name="car"></param>
+ 
         private void AddLoc(ITransport locomotive)
         {
             if (locomotive != null && listBoxLevels.SelectedIndex > -1)
             {
-                
-               
-                    int place = parking[listBoxLevels.SelectedIndex] + locomotive; 
-                if (place > -1)
+                try
                 {
+                    int place = parking[listBoxLevels.SelectedIndex] + locomotive;
+                    logger.Info("Добавлен локомотив " + locomotive.ToString() + " на место "
+                   + place);
                     Draw();
                 }
-                    else
+                catch (ParkingOverflowException ex)
                 {
-                    MessageBox.Show("Не удалось поставить машину");
+                    MessageBox.Show(ex.Message, "Переполнение", MessageBoxButtons.OK,
+                   MessageBoxIcon.Error);
+                    logger.Error("Переполнение");
                 }
-                            
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Неизвестная ошибка",
+                   MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    logger.Error("Неизвестная ошибка");
+                }
             }
-        }
+        }
 
         private void сохранитьToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (saveFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-               if (parking.SaveData(saveFileDialog.FileName))
-                {                
+                try
+                {
+                    parking.SaveData(saveFileDialog.FileName);
                     MessageBox.Show("Сохранение прошло успешно", "Результат",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    logger.Info("Сохранено в файл " + saveFileDialog.FileName);
                 }
-                else
+                catch (Exception ex)
                 {
-                    MessageBox.Show("Неизвестная ошибка при сохранении", "Результат",
-                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(ex.Message, "Неизвестная ошибка при сохранении",
+                   MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    logger.Error("Неизвестная ошибка при сохранении");
                 }
             }
         }
-            
- 
-        /// <summary>
-        /// Обработка нажатия пункта меню "Загрузить"
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+
         private void загрузитьToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (openFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                if (parking.LoadData(openFileDialog.FileName)) 
+                try
                 {
-
+                    parking.LoadData(openFileDialog.FileName);
                     MessageBox.Show("Загрузили", "Результат", MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
+                    logger.Info("Загружено из файла " + openFileDialog.FileName);
                 }
-            
-            else
-            {
-                MessageBox.Show("не загрузили", "результат", MessageBoxButtons.OK,
-               MessageBoxIcon.Error);
-            }             
+                catch (ParkingOccupiedPlaceException ex)
+                {
+                    MessageBox.Show(ex.Message, "Занятое место", MessageBoxButtons.OK,
+                   MessageBoxIcon.Error);
+                    logger.Error("Занятое место");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Неизвестная ошибка при сохранении",
+                   MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    logger.Error("Неизвестная ошибка при сохранении");
+                }
                 Draw();
             }
         }
     }
-}
+}

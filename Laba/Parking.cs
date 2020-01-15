@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -29,7 +29,7 @@ namespace Laba
         {
             if (p._places.Count == p._maxCount)
             {
-                return -1;
+                throw new ParkingOverflowException();
             }
             for (int i = 0; i < p._maxCount; i++)
             {
@@ -53,7 +53,7 @@ namespace Laba
                 p._places.Remove(index);
                 return locomotive;
             }
-            return null;
+            throw new ParkingNotFoundException(index);
         }
 
         private bool CheckFreePlace(int index)
@@ -95,7 +95,7 @@ namespace Laba
                 {
                     return _places[ind];
                 }
-                return null;
+                throw new ParkingNotFoundException(ind);
             }
             set
             {
@@ -104,8 +104,15 @@ namespace Laba
                     _places.Add(ind, value);
                     _places[ind].SetPosition(5 + ind / 5 * _placeSizeWidth + 5, ind % 5
                     * _placeSizeHeight + 15, PictureWidth, PictureHeight);
-                }                          
+                }
+                else
+                {
+                    throw new ParkingOccupiedPlaceException(ind);
+                }            
             }
         }
     }
 }
+
+
+

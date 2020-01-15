@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -6,8 +6,7 @@ using System.Windows.Forms;
 
 namespace Laba
 {
-    public delegate void locDelegate(ITransport locomotive);
-
+    public delegate void locDelegate(ITransport locomotive);
     static class Program
     {
         [STAThread]
