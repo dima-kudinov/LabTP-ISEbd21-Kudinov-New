@@ -30,7 +30,7 @@ namespace Laba
             }
 
         }
-        /// Метод отрисовки парковки
+
         private void Draw()
         {
             if (listBoxLevels.SelectedIndex > -1)
@@ -42,6 +42,7 @@ namespace Laba
                 pictureBoxParking.Image = bmp;
             }
         }
+
         private void buttonTakeLoc_Click(object sender, EventArgs e)
         {
             if (listBoxLevels.SelectedIndex > -1)
