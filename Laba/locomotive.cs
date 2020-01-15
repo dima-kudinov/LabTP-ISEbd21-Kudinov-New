@@ -11,7 +11,7 @@ namespace Laba
     {
         protected const int locWidth = 150;
         protected const int locHeight = 80;
-
+        
         public Color DopColor { protected set; get; }
 
         public VagonCount Count { protected set; get; }
@@ -67,9 +67,7 @@ namespace Laba
         public override void DrawLoc(Graphics g)
         {
             Pen pen = new Pen(Color.Black);
-
-
-
+            
             Brush b = new SolidBrush(MainColor);
             List<Point> p = new List<Point>(11);
             p.Add(new Point(Posx + 10, Posy + 15));

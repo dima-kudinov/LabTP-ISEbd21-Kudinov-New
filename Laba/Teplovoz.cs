@@ -12,7 +12,6 @@ namespace Laba
         public bool Tube { protected set; get; }
         public bool Line { protected set; get; }
 
-
         public Teplovoz(int maxSpeed, float weight, Color mainColor,
             Color dopColor, bool tube, bool line, VagonCount count) 
             : base(maxSpeed, weight, mainColor, dopColor, count)

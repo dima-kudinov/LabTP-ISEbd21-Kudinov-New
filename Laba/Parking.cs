@@ -11,6 +11,7 @@ namespace Laba
          where U : class, IVagon
     {
         private Dictionary<int, T> _places;
+        
         private HashSet<T> _removedTrains;
         private U vagon;
         private int _maxCount;
@@ -95,6 +96,7 @@ namespace Laba
         {
             return !_places.ContainsKey(index);
         }
+        
         public void Draw(Graphics g)
         {
             DrawMarking(g);
@@ -104,6 +106,7 @@ namespace Laba
                 _places[keys[i]].DrawLoc(g);
             }
         }
+
         private void DrawMarking(Graphics g)
         {
             Pen pen = new Pen(Color.Black, 3);
