@@ -49,6 +49,6 @@ namespace Laba
 
                 g.FillPolygon(m, tp.ToArray<Point>());
             }
-        }  
+        }          
     }
 }
