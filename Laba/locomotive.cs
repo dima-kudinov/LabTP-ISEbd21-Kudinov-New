@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -11,7 +11,7 @@ namespace Laba
     {
         protected const int locWidth = 150;
         protected const int locHeight = 80;
-
+        
         public Color DopColor { protected set; get; }
 
         public locomotive(int maxSpeed, float weight, Color mainColor, Color dopColor)
@@ -21,7 +21,6 @@ namespace Laba
             MainColor = mainColor;
             DopColor = dopColor;
         }
-
         public locomotive(string info)
         {
             string[] strs = info.Split(';');
@@ -87,12 +86,12 @@ namespace Laba
 
             g.FillPolygon(b, p.ToArray<Point>());
         }
-
+        
         public void SetDopColor(Color color)
         {
             DopColor = color;
         }
-
+        
         public override string ToString()
         {
             return MaxSpeed + ";" + Weight + ";" + MainColor.Name;
