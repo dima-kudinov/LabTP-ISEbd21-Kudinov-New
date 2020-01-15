@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -13,7 +13,7 @@ namespace Laba
         public bool Line { protected set; get; }
 
         public Teplovoz(int maxSpeed, float weight, Color mainColor,
-            Color dopColor, bool tube, bool line)
+            Color dopColor, bool tube, bool line) 
             : base(maxSpeed, weight, mainColor, dopColor)
         {
             MaxSpeed = maxSpeed;
@@ -35,9 +35,10 @@ namespace Laba
                 DopColor = Color.FromName(strs[3]);
                 Line = Convert.ToBoolean(strs[4]);
                 Tube = Convert.ToBoolean(strs[5]);
+               
             }
         }
-
+        
         public override void DrawLoc(Graphics g)
         {
             base.DrawLoc(g);
@@ -92,7 +93,7 @@ namespace Laba
             }
             return 0;
         }
-
+ 
         public bool Equals(Teplovoz other)
         {
             var res = (this as locomotive).Equals(other as locomotive);
@@ -112,8 +113,8 @@ namespace Laba
             {
                 return false;
             }
-
-            if (Tube != other.Tube)
+          
+        if (Tube != other.Tube)
             {
                 return false;
             }
@@ -135,11 +136,10 @@ namespace Laba
                 return Equals(locObj);
             }
         }
-
+  
         public override int GetHashCode()
         {
             return base.GetHashCode();
         }
     }
 }
-

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -11,9 +11,9 @@ namespace Laba
     {
         protected const int locWidth = 150;
         protected const int locHeight = 80;
-
+        
         public Color DopColor { protected set; get; }
-
+        
         public locomotive(int maxSpeed, float weight, Color mainColor, Color dopColor)
         {
             MaxSpeed = maxSpeed;
@@ -74,7 +74,7 @@ namespace Laba
         public override void DrawLoc(Graphics g)
         {
             Pen pen = new Pen(Color.Black);
-
+            
             Brush b = new SolidBrush(MainColor);
             List<Point> p = new List<Point>(11);
             p.Add(new Point(Posx + 10, Posy + 15));
@@ -119,6 +119,11 @@ namespace Laba
             return 0;
         }
 
+        /// <summary>
+        /// Метод интерфейса IEquatable для класса Car
+        /// </summary>
+        /// <param name="other"></param>
+        /// <returns></returns>
         public bool Equals(locomotive other)
         {
             if (other == null)
@@ -159,7 +164,7 @@ namespace Laba
                 return Equals(locObj);
             }
         }
-
+ 
         public override int GetHashCode()
         {
             return base.GetHashCode();
