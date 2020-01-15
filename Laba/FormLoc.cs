@@ -10,10 +10,6 @@ using System.Windows.Forms;
 
 namespace Laba
 {
-
-
-
-
     public partial class FormLoc : Form
     {
         private ITransport loc;
@@ -77,10 +73,5 @@ namespace Laba
             }
             Draw();
         }
-
-   
-    }
-
-
-    
+    }   
 }

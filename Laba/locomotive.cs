@@ -9,7 +9,6 @@ namespace Laba
 {
     public class locomotive : Train
     {
-
         protected const int locWidth = 150;
         protected const int locHeight = 80;
         
@@ -65,8 +64,6 @@ namespace Laba
         public override void DrawLoc(Graphics g)
         {
             Pen pen = new Pen(Color.Black);
-
-           
             
             Brush b = new SolidBrush(MainColor);
             List<Point> p = new List<Point>(11);

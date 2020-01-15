@@ -12,9 +12,6 @@ namespace Laba
 {
     public partial class FormParking : Form
     {
-        /// <summary>
-        /// Объект от класса-парковки
-        /// </summary>
         Parking<ITransport> parking;
         public FormParking()
         {
@@ -23,9 +20,7 @@ namespace Laba
            pictureBoxParking.Height);
             Draw();
         }
-        /// <summary>
-        /// Метод отрисовки парковки
-        /// </summary>
+
         private void Draw()
         {
             Bitmap bmp = new Bitmap(pictureBoxParking.Width, pictureBoxParking.Height);
@@ -33,11 +28,7 @@ namespace Laba
             parking.Draw(gr);
             pictureBoxParking.Image = bmp;
         }
-        /// <summary>
-        /// Обработка нажатия кнопки "Припарковать автомобиль"
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+
         private void buttonSetLoc_Click(object sender, EventArgs e)
         {
             ColorDialog dialog = new ColorDialog();
@@ -48,11 +39,7 @@ namespace Laba
                 Draw();
             }
         }
-        /// <summary>
-        /// Обработка нажатия кнопки "Припарковать гоночный автомобиль"
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+
         private void buttonSetTepl_Click(object sender, EventArgs e)
         {
             ColorDialog dialog = new ColorDialog();
@@ -68,11 +55,7 @@ namespace Laba
                 }
             }
         }
-        /// <summary>
-        /// Обработка нажатия кнопки "Забрать"
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+
         private void buttonTakeLoc_Click(object sender, EventArgs e)
         {
             if (maskedTextBoxPlace.Text != "")
