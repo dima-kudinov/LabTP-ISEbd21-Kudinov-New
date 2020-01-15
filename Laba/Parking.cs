@@ -29,7 +29,7 @@ namespace Laba
         {
             if (p._places.Count == p._maxCount)
             {
-                throw new ParkingOverflowException();
+                return -1;
             }
             for (int i = 0; i < p._maxCount; i++)
             {
@@ -53,7 +53,7 @@ namespace Laba
                 p._places.Remove(index);
                 return locomotive;
             }
-            throw new ParkingNotFoundException(index);
+            return null;
         }
 
         private bool CheckFreePlace(int index)
@@ -95,7 +95,7 @@ namespace Laba
                 {
                     return _places[ind];
                 }
-                throw new ParkingNotFoundException(ind);
+                return null;
             }
             set
             {
@@ -104,11 +104,7 @@ namespace Laba
                     _places.Add(ind, value);
                     _places[ind].SetPosition(5 + ind / 5 * _placeSizeWidth + 5, ind % 5
                     * _placeSizeHeight + 15, PictureWidth, PictureHeight);
-                }
-                else
-                {
-                    throw new ParkingOccupiedPlaceException(ind);
-                }            
+                }                          
             }
         }
     }
