@@ -21,9 +21,6 @@ namespace Laba
         private const int _placeSizeHeight = 80;
         private int _currentIndex;
 
-        /// <summary>
-        /// Получить порядковое место на парковке
-        /// </summary>
         public int GetKey
         {
             get
@@ -128,7 +125,6 @@ namespace Laba
                 {
                     throw new ParkingOccupiedPlaceException(ind);
                 }
-
             }
         }
 
@@ -140,9 +136,6 @@ namespace Laba
             }
         }
 
-        /// <summary>
-        /// Метод интерфейса IEnumerator для получения текущего элемента
-        /// </summary>
         object IEnumerator.Current
         {
             get
@@ -172,29 +165,16 @@ namespace Laba
             _currentIndex = -1;
         }
 
-        /// <summary>
-        /// Метод интерфейса IEnumerable
-        /// </summary>
-        /// <returns></returns>
         public IEnumerator<T> GetEnumerator()
         {
             return this;
         }
 
-        /// <summary>
-        /// Метод интерфейса IEnumerable
-        /// </summary>
-        /// <returns></returns>
         IEnumerator IEnumerable.GetEnumerator()
         {
             return GetEnumerator();
         }
 
-        /// <summary>
-        /// Метод интерфейса IComparable
-        /// </summary>
-        /// <param name="other"></param>
-        /// <returns></returns>
         public int CompareTo(Parking<T> other)
         {
             if (_places.Count > other._places.Count)

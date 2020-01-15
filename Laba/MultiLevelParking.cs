@@ -15,7 +15,7 @@ namespace Laba
 
         private const int countPlaces = 20;
         private int pictureWidth;
-        
+
         private int pictureHeight;
 
         /// Конструктор
