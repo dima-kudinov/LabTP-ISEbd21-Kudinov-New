@@ -85,15 +85,15 @@ namespace Laba
                 
                  
                 case 1:
-                    vagon = new Vagon2(Count,
+                    vagon = new VagonDomikom(Count,
                MainColor, DopColor, Posx, Posy);
                     break;
                 case 2:
-                    vagon = new Vagon3(Count,
+                    vagon = new VagonPlackart(Count,
                MainColor, DopColor, Posx, Posy);
                     break;
                 default:
-                    vagon = new Vagon(Count,
+                    vagon = new VagonStandart(Count,
                MainColor, DopColor, Posx, Posy);
                     break;
             }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Laba
 {
-    public class Vagon : IVagon
+    public class VagonStandart : IVagon
     {
         public VagonCount count;     
         public Color MainColor { private set; get; }
@@ -15,7 +15,7 @@ namespace Laba
         public int Posx;
         public int Posy;
         
-        public Vagon(VagonCount vagonCount, Color MainColor, Color DopColor,
+        public VagonStandart(VagonCount vagonCount, Color MainColor, Color DopColor,
             int posX, int posY)
         {
             this.MainColor = MainColor;

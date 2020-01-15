@@ -60,9 +60,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Teplovoz.cs" />
     <Compile Include="Train.cs" />
-    <Compile Include="Vagon3.cs" />
-    <Compile Include="Vagon2.cs" />
-    <Compile Include="Vagon.cs" />
+    <Compile Include="VagonPlackart.cs" />
+    <Compile Include="VagonDomikom.cs" />
+    <Compile Include="VagonStandart.cs" />
     <Compile Include="VagonCount.cs" />
     <EmbeddedResource Include="FormLoc.resx">
       <DependentUpon>FormLoc.cs</DependentUpon>

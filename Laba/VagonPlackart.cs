@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Laba
 {
-    public class Vagon2 : IVagon
+    public class VagonPlackart : IVagon
     {
         public VagonCount count;
        
@@ -16,7 +16,7 @@ namespace Laba
         public int Posx;
         public int Posy;
         
-        public Vagon2(VagonCount vagonCount, Color MainColor, Color DopColor,
+        public VagonPlackart(VagonCount vagonCount, Color MainColor, Color DopColor,
             int posX, int posY)
         {
             this.MainColor = MainColor;
@@ -38,15 +38,15 @@ namespace Laba
                 int shiftX = i * 60; 
 
                 Brush b = new SolidBrush(MainColor);
-                List<Point> p = new List<Point>(7);
+                List<Point> p = new List<Point>(9);
                 p.Add(new Point(Posx + 10 - shiftX, Posy + 45));
                 p.Add(new Point(Posx + 10 - shiftX, Posy + 50));
                 p.Add(new Point(Posx - 50 - shiftX, Posy + 50));
-                p.Add(new Point(Posx - 50 - shiftX, Posy + 15));
-                p.Add(new Point(Posx - 25 - shiftX, Posy + 25));// + -
-                p.Add(new Point(Posx + 5 - shiftX, Posy + 15));
+                p.Add(new Point(Posx - 50 - shiftX, Posy + 25));
+                p.Add(new Point(Posx - 27 - shiftX, Posy + 15)); 
+                p.Add(new Point(Posx + 5 - shiftX, Posy + 25));
                 p.Add(new Point(Posx + 5 - shiftX, Posy + 45));
-                p.Add(new Point(Posx + 5 - shiftX, Posy + 45));
+                p.Add(new Point(Posx + 5 - shiftX, Posy + 45)); 
 
                 g.FillPolygon(b, p.ToArray<Point>());
             }
