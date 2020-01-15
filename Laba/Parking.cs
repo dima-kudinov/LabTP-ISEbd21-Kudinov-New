@@ -68,7 +68,7 @@ namespace Laba
         public static bool operator <=(Parking<T, U> p, int compareWith)
         {
             int freePlaces = 0;
-            for (int i = 0; i < p._places.Length; i++)
+            for (int i = 0; i < p._maxCount; i++)
             {
                 if (p.CheckFreePlace(i))
                 {
@@ -81,7 +81,7 @@ namespace Laba
         public static bool operator >=(Parking<T, U> p, int compareWith)
         {
             int freePlaces = 0;
-            for (int i = 0; i < p._places.Length; i++)
+            for (int i = 0; i < p._maxCount; i++)
             {
                 if (p.CheckFreePlace(i))
                 {
