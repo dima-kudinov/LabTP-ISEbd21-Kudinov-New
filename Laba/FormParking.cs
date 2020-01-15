@@ -31,7 +31,6 @@ namespace Laba
                 listBoxLevels.Items.Add("Уровень " + (i + 1));
             }
         }
-
         /// Метод отрисовки парковки
         private void Draw()
         {
@@ -81,7 +80,7 @@ namespace Laba
                 }
             }
         }
-
+        
         private void listBoxLevels_SelectedIndexChanged(object sender, EventArgs e)
         {
             Draw();

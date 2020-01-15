@@ -37,7 +37,7 @@ namespace Laba
             PictureHeight = pictureHeight;
         }
 
-        public static int operator +(Parking<T> p, T loc)
+        public static int operator +(Parking<T> p, T locomotive)
         {
             if (p._places.Count == p._maxCount)
             {
@@ -51,7 +51,8 @@ namespace Laba
             {
                 if (p.CheckFreePlace(i))
                 {
-                    p._places.Add(i, loc);
+                    p._places.Add(i, locomotive);
+
                     p._places[i].SetPosition(5 + i / 5 * _placeSizeWidth + 5,
                      i % 5 * _placeSizeHeight + 15, p.PictureWidth,
                     p.PictureHeight);
@@ -127,6 +128,7 @@ namespace Laba
                 }
             }
         }
+
 
         public T Current
         {

@@ -29,7 +29,8 @@ namespace Laba
                 parkingStages.Add(new Parking<ITransport>(countPlaces, pictureWidth,
                pictureHeight));
             }
-        }
+        }
+
         /// Индексатор
         public Parking<ITransport> this[int ind]
         {
